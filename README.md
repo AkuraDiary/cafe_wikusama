@@ -1,6 +1,6 @@
 # cafe_wikusama
 
-A new Flutter project.
+UKK Cafe Wikusama
 
 ## Getting Started
 
