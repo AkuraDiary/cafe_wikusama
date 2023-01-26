@@ -15,8 +15,10 @@ class _LoginDummyState extends State<LoginDummy> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
+            
             image: AssetImage(
-              'assets/image/common/Logo_Background.png'
+              'assets/image/common/Logo_Background.png',
+              
             )
           )
         ),
