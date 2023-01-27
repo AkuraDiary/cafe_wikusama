@@ -21,15 +21,11 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 1.0,
+              decoration: BoxDecoration(
+                image : DecorationImage(
+                  image: AssetImage("assets/images/common/Login_Background.png")
+                )
+              ),
               child: Center(
                 child: Container(
                   margin: EdgeInsets.all(12),

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:form_validator/form_validator.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,177 +12,193 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // Initially password is obscure
+  bool isLoading = false;
+  bool _obscureText = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  void fireToast(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
-  }
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  void _validateAndSubmit() {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        isLoading = true;
+      }); // TODO
+      String email = emailController.text;
+      String password = passwordController.text;
+      Fluttertoast.showToast(msg: "email : $email, password : $password");
+      // Provider.of<AuthNotifier>(context, listen: false).login(
+      //   username: usernameController.text,
+      //   password: passwordController.text,
+      // );
 
-  void fireToast2(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green.shade900,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
-  }
+    }
+    }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.green.shade900,
-              Colors.green,
-              Colors.green.shade400,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.centerRight,
-          )
-        ),
-        child: Column(
-          children: [
-            Container(
-              height: 210,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 35,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: const [
-                  Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                    ),
-                  ),
-                  SizedBox(height: 7.5,),
-                  Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                    topRight: Radius.circular(50),
-                  )
+      body: Form(
+        key: _formKey,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.green.shade900,
+                Colors.green,
+                Colors.green.shade400,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.centerRight,
+            )
+          ),
+          child: Column(
+            children: [
+              Container(
+                height: 210,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 35,
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 60,),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 25
-                        ),
-                        height: 120,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              blurRadius: 20,
-                              spreadRadius: 10,
-                              offset: const Offset(0,10),
-                            )
-                          ]
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            TextField(
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10
-                                ),
-                                border: InputBorder.none,
-                                hintText: 'Email',
-                                isCollapsed: false,
-                                hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey
-                                )
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.black54,
-                              height: 1,
-                            ),
-                            TextField(
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                ),
-                                border: InputBorder.none,
-                                hintText: 'Password',
-                                isCollapsed: false,
-                                hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                )
-                              ),
-                            )
-                          ],
-                        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
                       ),
-                      const SizedBox(height: 35,),
-                      MaterialButton(
-                        onPressed: (){
+                    ),
+                    SizedBox(height: 7.5,),
+                    Text(
+                      'Welcome Back',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    )
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 60,),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 25
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                blurRadius: 20,
+                                spreadRadius: 10,
+                                offset: const Offset(0,10),
+                              )
+                            ]
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
 
-                        },
-                        height: 45,
-                        minWidth: 240,
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,       
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 25, 10, 10),
+                                child: TextFormField(
+                                  controller: emailController,
+                                  validator: ValidationBuilder().required().email().build(),
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                  decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 10
+                                    ),
+                                    labelText: 'Email',
+
+                                    hintStyle: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey
+                                    )
+                                  ),
+                                ),
+                              ),
+
+
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 25, 10, 10),
+                                child: TextFormField(
+                                  obscureText: _obscureText,
+                                  controller: passwordController,
+                                  validator: ValidationBuilder().required().build(),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 10
+                                    ),
+
+                                    labelText: 'Password',
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscureText = !_obscureText;
+                                          });
+                                        },
+                                        icon: _obscureText
+                                            ? const Icon(Icons.visibility)
+                                            : const Icon(Icons.visibility_off)),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        textColor: Colors.white,
-                        color: Colors.green.shade700,
-                        shape: const StadiumBorder(),
-                      ),
-                      const SizedBox(height: 25,),
-                    ],
+                        const SizedBox(height: 35,),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: MaterialButton(
+                            onPressed: (){
+                              _validateAndSubmit();
+                            },
+                            height: 45,
+                            minWidth: double.infinity,
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            textColor: Colors.white,
+                            color: Colors.green.shade700,
+                            shape: const StadiumBorder(),
+                          ),
+                        ),
+                        const SizedBox(height: 25,),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
