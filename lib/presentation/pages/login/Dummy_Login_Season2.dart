@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
         child: Column(
           children: [
             Container(
-              height: 500,
+              height: 450,
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 35,
@@ -82,7 +82,7 @@ class _LoginState extends State<Login> {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 1,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
