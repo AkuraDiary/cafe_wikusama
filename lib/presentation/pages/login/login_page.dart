@@ -1,213 +1,187 @@
-import 'package:cafe_wikusama/app.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:form_validator/form_validator.dart';
 
-class LoginPage extends StatefulWidget {
+class Login extends StatefulWidget {
+  const Login({super.key});
+  static const String id = 'lesson';
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool _isObscure3 = true;
-  bool visible = false;
-  final _formkey = GlobalKey<FormState>();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+class _LoginState extends State<Login> {
+  // Initially password is obscure
+  bool isLoading = false;
+  bool _obscureText = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  void _validateAndSubmit() {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        isLoading = true;
+      }); // TODO
+      String email = emailController.text;
+      String password = passwordController.text;
+      Fluttertoast.showToast(msg: "email : $email, password : $password");
+      // Provider.of<AuthNotifier>(context, listen: false).login(
+      //   username: usernameController.text,
+      //   password: passwordController.text,
+      // );
+
+    }
+    }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image : DecorationImage(
-                  image: AssetImage("assets/images/common/Login_Background.png")
-                )
+      body: Form(
+        key: _formKey,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(
+                  'https://s3-alpha-sig.figma.com/img/5910/ec35/a763731970db1d8a019c7d83e29aa619?Expires=1675641600&Signature=bxO3kIdx9e7fOgS~TE1-42irCn3UjkF6crtC2Sx1~7c20N2dLhRyc-82NJrRnpoQCm9kOjVo01zKCaf4BMfLg~KUCiHR~Mwo3DS9hC6tA9n-wlYsMCZnWRagXNW852ZszAMR5xeGoJT2JOEqEEZNLqwsIw15qluQsUUbNQoj~p7jvWmS5csQQGlfTzdVIaDdzgFhsTB24ov2Ip0f7CMvv4HLk4Oz1N0QyDxOAt~3MoQRwSgmXTc6mTHwSI1BICi7Jfv~6CLbDNvg2vi-wv74KeBZRKhsXgd4ogdX96U1LbevJrvP2keZfwb4sxrpTo370ZYB0km0ZbCa81JIttcAjw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
+                ),
+              scale: 1.5,
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          child: Column(
+            children: [
+              Container(
+                height: 450,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 35,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [   
+                  ],
+                ),
               ),
-              child: Center(
+              Expanded(
+                flex: 3,
                 child: Container(
-                  margin: EdgeInsets.all(12),
-                  child: Form(
-                    key: _formkey,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    )
+                  ),
+                  child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          "Login",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                        const SizedBox(height: 60,),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 25
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
                             color: Colors.white,
-                            fontSize: 40,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                blurRadius: 20,
+                                spreadRadius: 10,
+                                offset: const Offset(0,10),
+                              )
+                            ]
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: emailController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Email',
-                            enabled: true,
-                            contentPadding: const EdgeInsets.only(
-                                left: 14.0, bottom: 8.0, top: 8.0),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value!.length == 0) {
-                              return "Email cannot be empty";
-                            }
-                            if (!RegExp(
-                                "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                                .hasMatch(value)) {
-                              return ("Please enter a valid email");
-                            } else {
-                              return null;
-                            }
-                          },
-                          onSaved: (value) {
-                            emailController.text = value!;
-                          },
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: passwordController,
-                          obscureText: _isObscure3,
-                          decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                                icon: Icon(_isObscure3
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscure3 = !_isObscure3;
-                                  });
-                                }),
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Password',
-                            enabled: true,
-                            contentPadding: const EdgeInsets.only(
-                                left: 14.0, bottom: 8.0, top: 15.0),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
-                            ),
-                          ),
-                          validator: (value) {
-                            RegExp regex = new RegExp(r'^.{6,}$');
-                            if (value!.isEmpty) {
-                              return "Password cannot be empty";
-                            }
-                            if (!regex.hasMatch(value)) {
-                              return ("please enter valid password min. 6 character");
-                            } else {
-                              return null;
-                            }
-                          },
-                          onSaved: (value) {
-                            passwordController.text = value!;
-                          },
-                          keyboardType: TextInputType.emailAddress,
-                        ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
 
-                        SizedBox(
-                          height: 20,
-                        ),
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                          elevation: 5.0,
-                          height: 40,
-                          onPressed: () {
-                            setState(() {
-                              visible = true;
-                            });
-                          },
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 25, 10, 10),
+                                child: TextFormField(
+                                  controller: emailController,
+                                  validator: ValidationBuilder().required().email().build(),
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                  decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 10
+                                    ),
+                                    labelText: 'Email',
+
+                                    hintStyle: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey
+                                    )
+                                  ),
+                                ),
+                              ),
+
+
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 25, 10, 10),
+                                child: TextFormField(
+                                  obscureText: _obscureText,
+                                  controller: passwordController,
+                                  validator: ValidationBuilder().required().build(),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 10
+                                    ),
+
+                                    labelText: 'Password',
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscureText = !_obscureText;
+                                          });
+                                        },
+                                        icon: _obscureText
+                                            ? const Icon(Icons.visibility)
+                                            : const Icon(Icons.visibility_off)),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          color: Colors.white,
                         ),
-                        SizedBox(
-                          height: 10,
+                        const SizedBox(height: 35,),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: MaterialButton(
+                            onPressed: (){
+                              _validateAndSubmit();
+                            },
+                            height: 45,
+                            minWidth: double.infinity,
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            textColor: Colors.white,
+                            color: Colors.green.shade700,
+                            shape: const StadiumBorder(),
+                          ),
                         ),
-                        Visibility(
-                            maintainSize: true,
-                            maintainAnimation: true,
-                            maintainState: true,
-                            visible: visible,
-                            child: Container(
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                ))),
+                        const SizedBox(height: 25,),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                      ),
-                      elevation: 5.0,
-                      height: 40,
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyApp(),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
