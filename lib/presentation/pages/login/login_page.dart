@@ -35,6 +35,7 @@ class _LoginState extends State<Login> {
     }
     }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +49,7 @@ class _LoginState extends State<Login> {
               image: NetworkImage(
                   'https://s3-alpha-sig.figma.com/img/5910/ec35/a763731970db1d8a019c7d83e29aa619?Expires=1675641600&Signature=bxO3kIdx9e7fOgS~TE1-42irCn3UjkF6crtC2Sx1~7c20N2dLhRyc-82NJrRnpoQCm9kOjVo01zKCaf4BMfLg~KUCiHR~Mwo3DS9hC6tA9n-wlYsMCZnWRagXNW852ZszAMR5xeGoJT2JOEqEEZNLqwsIw15qluQsUUbNQoj~p7jvWmS5csQQGlfTzdVIaDdzgFhsTB24ov2Ip0f7CMvv4HLk4Oz1N0QyDxOAt~3MoQRwSgmXTc6mTHwSI1BICi7Jfv~6CLbDNvg2vi-wv74KeBZRKhsXgd4ogdX96U1LbevJrvP2keZfwb4sxrpTo370ZYB0km0ZbCa81JIttcAjw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
                 ),
-              scale: 1.5,
+              opacity: 150,
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -63,7 +64,14 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [   
+                  children: const [
+                    Center(
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage('https://s3-alpha-sig.figma.com/img/6d79/bf94/d54e77bf7ffe4421c9a0eea6177b24db?Expires=1676246400&Signature=Gu6kDVEj-gCt~jLb5KcUT2Wp6g5bYzIjIxwd51o0RoJveOQlxKjhkHdPX7aqQtknpU9X~sXDdPq2gvnry7iq80VnDMcPL72~98TZSNK~9Y0aqCxkwu1gy7GFXAB23ZTFJI91Zhu1fPOFD89fi-CLc8ltjw4VHkWmXjvGjQ-91dbM6OD7zBUxAjml57M652XWeDkY2CQFy9wDEhBI-yTkccBkc0l7SPvyyYNzMxVg8Ti3jWFiSP9Kfh6Wv40PyvDFQf~SFU3IxzFzy4NDhvRlDcz3xNhzY~cn2ENOS59rG7BgpHzJg5n-wxYAZpYBrAJslWEG4Z9y7ssgIdQPmIlHhw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4') ,
+                        radius: 80,
+                        backgroundColor: Colors.transparent,
+                    )
+                    )
                   ],
                 ),
               ),
