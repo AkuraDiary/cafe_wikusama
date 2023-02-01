@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cafe_wikusama/presentation/pages/home_page.dart';
+import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,10 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: Login(),
     );
   }
 }
