@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                     borderSide: BorderSide.none),
                 hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade500),
                 hintText: "Search users"),
+                
           ),
         ),
       ),
@@ -120,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     actionExtentRatio: 0.25,
                     child: userComponent(user: _foundedUsers[index]),
                     actions: <Widget>[
-                      new IconSlideAction(
+                      /*new IconSlideAction(
                         caption: 'Archive',
                         color: Colors.transparent,
                         icon: Icons.archive,
@@ -131,10 +132,10 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.transparent,
                         icon: Icons.share,
                         onTap: () => print('Share'),
-                      ),
+                      ),*/
                     ],
                     secondaryActions: <Widget>[
-                      new IconSlideAction(
+                      /*new IconSlideAction(
                         caption: 'More',
                         color: Colors.transparent,
                         icon: Icons.more_horiz,
@@ -145,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.transparent,
                         icon: Icons.delete,
                         onTap: () => print('Delete'),
-                      ),
+                      ),*/
                     ],
                   );
                 })
@@ -187,7 +188,7 @@ class _HomePageState extends State<HomePage> {
           GestureDetector(
             onTap: () {
               setState(() {
-                user.isFollowedByMe = !user.isFollowedByMe;
+                user.addItem = !user.addItem;
               });
             },
             child: AnimatedContainer(
@@ -195,19 +196,19 @@ class _HomePageState extends State<HomePage> {
                 width: 110,
                 duration: Duration(milliseconds: 300),
                 decoration: BoxDecoration(
-                    color: user.isFollowedByMe
+                    color: user.addItem
                         ? Colors.blue[700]
                         : Color(0xffffff),
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
-                      color: user.isFollowedByMe
+                      color: user.addItem
                           ? Colors.transparent
                           : Colors.grey.shade700,
                     )),
                 child: Center(
-                    child: Text(user.isFollowedByMe ? 'Unfollow' : 'Follow',
+                    child: Text(user.addItem ? 'Added' : 'Add',
                         style: TextStyle(
-                            color: user.isFollowedByMe
+                            color: user.addItem
                                 ? Colors.white
                                 : Colors.white)))),
           )
