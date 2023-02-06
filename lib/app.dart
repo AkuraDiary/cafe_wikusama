@@ -1,7 +1,7 @@
+import 'package:cafe_wikusama/presentation/pages/dummy/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_wikusama/presentation/pages/home_page.dart';
 import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: HomePage(),
     );
   }
 }
