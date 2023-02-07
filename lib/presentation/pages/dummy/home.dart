@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-        color: Colors.grey.shade900,
+        color: Colors.white,
         child: _foundedUsers.length > 0
             ? ListView.builder(
                 itemCount: _foundedUsers.length,
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
             : Center(
                 child: Text(
                 "No users found",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               )),
       ),
     );
@@ -173,13 +173,14 @@ class _HomePageState extends State<HomePage> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.only(top: 10, bottom: 10),
+      
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(children: [
             Container(
-                width: 60,
-                height: 60,
+                width: 120,
+                height: 120,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.network(user.image),
@@ -188,11 +189,15 @@ class _HomePageState extends State<HomePage> {
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(user.name,
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w500)),
+                      color: Colors.black, fontWeight: FontWeight.w500)),
               SizedBox(
                 height: 5,
               ),
               Text(user.username, style: TextStyle(color: Colors.grey[500])),
+              SizedBox(
+                height: 15,
+              ),
+              Text("Price :",style: TextStyle(color: Colors.black),),
             ])
           ]),
           GestureDetector(
@@ -219,8 +224,8 @@ class _HomePageState extends State<HomePage> {
                     child: Text(user.addItem ? 'Added' : 'Add',
                         style: TextStyle(
                             color: user.addItem
-                                ? Colors.white
-                                : Colors.white)))),
+                                ? Colors.black
+                                : Colors.black)))),
           )
         ],
       ),
