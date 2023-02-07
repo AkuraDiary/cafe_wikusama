@@ -88,6 +88,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        actions: [
+            Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Icon(
+              Icons.settings,
+              color: Colors.white,
+              size: 35,
+            ),
+          ),
+        ],
         backgroundColor: Colors.grey.shade900,
         title: Container(
           height: 38,
@@ -95,7 +105,7 @@ class _HomePageState extends State<HomePage> {
             onChanged: (value) => onSearch(value),
             decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.grey[850],
+                fillColor: Colors.white,
                 contentPadding: EdgeInsets.all(0),
                 prefixIcon: Icon(
                   Icons.search,
