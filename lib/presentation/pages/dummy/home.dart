@@ -166,14 +166,26 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(color: Colors.black),
               )),
       ),
+      floatingActionButton: Container(
+        child: Text(
+          'View Order',
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
+        color: Colors.black,
+      ),
     );
   }
 
   userComponent({required User user}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.only(top: 10, bottom: 10),
-      
+      padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.transparent,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
