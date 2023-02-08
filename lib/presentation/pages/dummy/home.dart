@@ -180,10 +180,9 @@ class _HomePageState extends State<HomePage> {
 
   userComponent({required User user}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1.0),
         borderRadius: BorderRadius.circular(20),
         color: Colors.transparent,
       ),
@@ -225,13 +224,13 @@ class _HomePageState extends State<HomePage> {
                 duration: Duration(milliseconds: 300),
                 decoration: BoxDecoration(
                     color: user.addItem
-                        ? Colors.transparent
-                        : Colors.transparent,
+                        ? Colors.blue[700]
+                        : Color(0xffffff),
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
                       color: user.addItem
                           ? Colors.transparent
-                          : Colors.transparent,
+                          : Colors.grey.shade700,
                     )),
                 child: Center(
                     child: Text(user.addItem ? 'Added' : 'Add',
