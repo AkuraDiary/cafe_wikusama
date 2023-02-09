@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
 import 'model.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,53 +86,57 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final sizedevice = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        actions: [
-            Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Icon(
-              Icons.settings,
-              color: Colors.white,
-              size: 35,
+        appBar: AppBar(
+          elevation: 0,
+          actions: [
+            IconButton(
+              icon: Icon(
+                MyFlutterApp.sliders_h,
+                color: Colors.black,
+                size: 25,
+              ),
+              onPressed: () {
+                print("Test");
+              },
+            )
+          ],
+          backgroundColor: Colors.white,
+          title: Container(
+            height: 38,
+            margin: EdgeInsets.only(top: 10),
+            child: TextField(
+              onChanged: (value) => onSearch(value),
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  contentPadding: EdgeInsets.all(0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide.none),
+                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
+                  hintText: "Customers cari apa?"),
             ),
           ),
-        ],
-        backgroundColor: Colors.grey.shade900,
-        title: Container(
-          height: 38,
-          child: TextField(
-            onChanged: (value) => onSearch(value),
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: EdgeInsets.all(0),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.grey.shade500,
-                ),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: BorderSide.none),
-                hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade500),
-                hintText: "Search users"),
-                
-          ),
         ),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: _foundedUsers.length > 0
-            ? ListView.builder(
-                itemCount: _foundedUsers.length,
-                itemBuilder: (context, index) {
-                  return Slidable(
-                    actionPane: SlidableDrawerActionPane(),
-                    actionExtentRatio: 0.25,
-                    child: userComponent(user: _foundedUsers[index]),
-                    actions: <Widget>[
-                      /*new IconSlideAction(
+        body: Container(
+          color: Colors.white,
+          child: _foundedUsers.length > 0
+              ? ListView.builder(
+                  itemCount: _foundedUsers.length,
+                  itemBuilder: (context, index) {
+                    return Slidable(
+                      actionPane: SlidableDrawerActionPane(),
+                      actionExtentRatio: 0.25,
+                      child: userComponent(user: _foundedUsers[index]),
+                      actions: <Widget>[
+                        /*new IconSlideAction(
                         caption: 'Archive',
                         color: Colors.transparent,
                         icon: Icons.archive,
@@ -143,9 +148,9 @@ class _HomePageState extends State<HomePage> {
                         icon: Icons.share,
                         onTap: () => print('Share'),
                       ),*/
-                    ],
-                    secondaryActions: <Widget>[
-                      /*new IconSlideAction(
+                      ],
+                      secondaryActions: <Widget>[
+                        /*new IconSlideAction(
                         caption: 'More',
                         color: Colors.transparent,
                         icon: Icons.more_horiz,
@@ -157,32 +162,41 @@ class _HomePageState extends State<HomePage> {
                         icon: Icons.delete,
                         onTap: () => print('Delete'),
                       ),*/
-                    ],
-                  );
-                })
-            : Center(
-                child: Text(
-                "No users found",
-                style: TextStyle(color: Colors.black),
-              )),
-      ),
-      floatingActionButton: Container(
-        child: Text(
-          'View Order',
-          style: TextStyle(
-            color: Colors.white
-          ),
+                      ],
+                    );
+                  })
+              : Center(
+                  child: Text(
+                  "No users found",
+                  style: TextStyle(color: Colors.black),
+                )),
         ),
-        color: Colors.black,
-      ),
-    );
+        floatingActionButton: Positioned(
+          bottom: 200,
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            width: sizedevice - 30,
+            height: 60,
+            color: Colors.green,
+            child: Row(
+              children: [
+                Text("1"),
+                Text("2"),
+                Text("3"),
+              ],
+            ),
+          ),
+        ));
   }
 
   userComponent({required User user}) {
+    final sizedevicewidth = MediaQuery.of(context).size.width;
+
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       decoration: BoxDecoration(
+        border: Border.all(color: Colors.black, width: 1.0),
         borderRadius: BorderRadius.circular(20),
         color: Colors.transparent,
       ),
@@ -191,25 +205,31 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(children: [
             Container(
-                width: 120,
-                height: 120,
+                width: 60,
+                height: 60,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(60),
                   child: Image.network(user.image),
                 )),
             SizedBox(width: 10),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(user.name,
+              Text("PIZZA APA HAYO",
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500)),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14)),
               SizedBox(
                 height: 5,
               ),
-              Text(user.username, style: TextStyle(color: Colors.grey[500])),
+              Text("Deskripsi Produk",
+                  style: TextStyle(color: Colors.grey[500], fontSize: 12)),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
-              Text("Price :",style: TextStyle(color: Colors.black),),
+              Text(
+                "Rp. ",
+                style: TextStyle(color: Colors.amber),
+              ),
             ])
           ]),
           GestureDetector(
@@ -223,21 +243,21 @@ class _HomePageState extends State<HomePage> {
                 width: 110,
                 duration: Duration(milliseconds: 300),
                 decoration: BoxDecoration(
-                    color: user.addItem
-                        ? Colors.blue[700]
-                        : Color(0xffffff),
+                    color:
+                        user.addItem ? Colors.transparent : Colors.transparent,
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
                       color: user.addItem
                           ? Colors.transparent
-                          : Colors.grey.shade700,
+                          : Colors.transparent,
                     )),
                 child: Center(
                     child: Text(user.addItem ? 'Added' : 'Add',
                         style: TextStyle(
-                            color: user.addItem
-                                ? Colors.black
-                                : Colors.black)))),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color:
+                                user.addItem ? Colors.black : Colors.black)))),
           )
         ],
       ),
