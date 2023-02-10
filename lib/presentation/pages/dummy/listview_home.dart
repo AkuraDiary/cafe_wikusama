@@ -12,47 +12,68 @@ class ListHomePage extends StatefulWidget {
 
 class _ListHomePageState extends State<ListHomePage> {
   List<User> _foundedUsers = [];
+  List<User> _foundedMenu = [];
 
   List<User> _users = [
     User(
+        '01',
         'Elliana Palacios',
         '@elliana',
+        'Rp 270000',
         false),
     User(
+        '02',
         'Kayley Dwyer',
         '@kayley',
+        'Rp 270000',
         false),
     User(
+        '03',
         'Kathleen Mcdonough',
         '@kathleen',
+        'Rp 270000',
         false),
     User(
+        '04',
         'Kathleen Dyer',
         '@kathleen',
+        'Rp 270000',
         false),
     User(
+        '05',
         'Mikayla Marquez',
         '@mikayla',
+        'Rp 270000',
         false),
     User(
+        '06',
         'Kiersten Lange',
         '@kiersten',
+        'Rp 270000',
         false),
     User(
+        '07',
         'Carys Metz',
         '@metz',
+        'Rp 270000',
         false),
     User(
+        '08',
         'Ignacio Schmidt',
         '@schmidt',
+        'Rp 270000',
         false),
     User(
+        '09',
         'Clyde Lucas',
         '@clyde',
+        'Rp 270000',
         false),
     User(
+        '10',
         'Mikayla Marquez',
         '@mikayla',
+        'Rp 270000',
         false)
   ];
 
@@ -63,8 +84,10 @@ class _ListHomePageState extends State<ListHomePage> {
 
     setState(() {
       _foundedUsers = _users;
+      _foundedMenu = _users;
     });
   }
+
 
   onSearch(String search) {
     setState(() {
@@ -152,26 +175,83 @@ class _ListHomePageState extends State<ListHomePage> {
 
   userComponent({required User user}) {
     return Container(
-    margin: EdgeInsets.symmetric(horizontal: 20),
+    margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
     padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
     decoration: BoxDecoration(
+    border: Border.all(color: Colors.black,width: 1),
     borderRadius: BorderRadius.circular(20),
     color: Colors.transparent,
     ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            children: [
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(user.no,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Colors.black,fontWeight: FontWeight.w500, fontSize: 14
+                  ) ,),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(user.name,
+                  style: TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.w500
+                  ),),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(user.username,
+                    style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
+                    ),),
+                  Text(user.username,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
+                    ),),
+                  Text(user.username,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w500, fontSize: 12
+                    ),)
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(user.price,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w500
+                    ),),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    color: Colors.orange,
+                    child: Text(
+                        "On Going"
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "User, Date",
+                    style: TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w200
+                    ),
 
-            ],
-          ),
-          Column(
-            children: [
-
-            ],
-          )
+                  )
+                ],
+              ),
+            ),
         ],
-
       ),
     );
   }
