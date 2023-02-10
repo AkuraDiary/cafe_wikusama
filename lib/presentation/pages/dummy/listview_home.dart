@@ -230,7 +230,7 @@ class _ListHomePageState extends State<ListHomePage> {
                         color: Colors.black, fontWeight: FontWeight.w500
                     ),),
                   SizedBox(
-                    height: 5,
+                    height: 10,
                   ),
                   Container(
                     color: Colors.orange,
@@ -239,7 +239,7 @@ class _ListHomePageState extends State<ListHomePage> {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 10,
                   ),
                   Text(
                     "User, Date",
