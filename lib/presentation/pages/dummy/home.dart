@@ -172,17 +172,38 @@ class _HomePageState extends State<HomePage> {
                 )),
         ),
         floatingActionButton: Positioned(
-          bottom: 200,
+          height: 100,
+          bottom: 100,
           child: Container(
-            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.only(
+              left: 10,
+              right: 10, 
+            ),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 1.0),
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+          ),
             width: sizedevice - 30,
-            height: 60,
-            color: Colors.green,
+            height: 100,
+            
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("1"),
-                Text("2"),
-                Text("3"),
+                Text(
+                  ' 3 Items | Rp. 180.000,00',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18
+                  ),
+                ),
+                Text(
+                  ' View Orders',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18
+                  ),
+                )
               ],
             ),
           ),
@@ -205,8 +226,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(children: [
             Container(
-                width: 60,
-                height: 60,
+                width: 110,
+                height: 110,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(60),
                   child: Image.network(user.image),
@@ -240,7 +261,7 @@ class _HomePageState extends State<HomePage> {
             },
             child: AnimatedContainer(
                 height: 35,
-                width: 110,
+                width: 70,
                 duration: Duration(milliseconds: 300),
                 decoration: BoxDecoration(
                     color:
