@@ -25,33 +25,40 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
         index: currentIndex,
         children: screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.pink,
-        unselectedItemColor: Colors.white70,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 28,
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() {
-          currentIndex = index;
-        }),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            //backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            //backgroundColor: Colors.red
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            //backgroundColor: Colors.green
-          ),
-        ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+        
+        child: BottomNavigationBar(
+          backgroundColor: Colors.grey,
+          selectedItemColor: Colors.orange,
+          unselectedItemColor: Colors.black12,
+          type: BottomNavigationBarType.fixed,
+          iconSize: 28,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() {
+            currentIndex = index;
+          }),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+              //backgroundColor: Colors.blue
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              //backgroundColor: Colors.red
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+              //backgroundColor: Colors.green
+            ),
+          ],
+        ),
       ),
     );
   }
