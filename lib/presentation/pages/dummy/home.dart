@@ -172,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                 )),
         ),
         floatingActionButton: Positioned(
-          height: 100,
-          bottom: 100,
+          height: 80,
+          bottom: 80,
           child: Container(
             padding: EdgeInsets.only(
               left: 10,
@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
             width: sizedevice - 30,
-            height: 100,
+            height: 80,
             
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

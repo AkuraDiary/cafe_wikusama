@@ -216,7 +216,10 @@ class _ListHomePageState extends State<ListHomePage> {
                   Text(user.username,
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
-                    ),)
+                    ),),
+                  SizedBox(
+                    height: 10,
+                  )
                 ],
               ),
             ),

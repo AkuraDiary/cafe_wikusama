@@ -30,9 +30,9 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        
+
         child: BottomNavigationBar(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.black12,
           type: BottomNavigationBarType.fixed,

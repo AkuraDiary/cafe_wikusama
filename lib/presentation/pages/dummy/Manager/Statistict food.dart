@@ -1,16 +1,16 @@
 import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'model_list.dart';
+import 'package:cafe_wikusama/presentation/pages/dummy/model_list.dart';
 
-class ListHomePage2 extends StatefulWidget {
-  const ListHomePage2({Key? key}) : super(key: key);
+class ListStatisticFood extends StatefulWidget {
+  const ListStatisticFood({Key? key}) : super(key: key);
 
   @override
-  _ListHomePageState createState() => _ListHomePageState();
+  _ListStatisticFood createState() => _ListStatisticFood();
 }
 
-class _ListHomePageState extends State<ListHomePage2> {
+class _ListStatisticFood extends State<ListStatisticFood> {
 
   List<User> _foundedUsers = [];
   List<User> _foundedMenu = [];
@@ -103,14 +103,6 @@ class _ListHomePageState extends State<ListHomePage2> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
-        title: Container(
-          height: 38,
-          child: Text(
-            "Pesanan",
-            style: TextStyle(color: Colors.black,fontSize: 30),
-          ),
-        ),
         actions: [
           IconButton(
             icon: Icon(
@@ -123,10 +115,34 @@ class _ListHomePageState extends State<ListHomePage2> {
             },
           )
         ],
+        backgroundColor: Colors.white,
+        title: Container(
+          height: 30,
+          margin: EdgeInsets.only(top: 10),
+          child: TextField(
+            onChanged: (value) => onSearch(value),
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.grey.shade200,
+                contentPadding: EdgeInsets.all(0),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide.none),
+                hintStyle: TextStyle(fontSize: 14, color: Colors.black),
+                hintText: "Search"),
+          ),
+        ),
       ),
       body: Container(
         color: Colors.white,
-        child: _foundedUsers.length > 0
+        child: Container(
+
+        ),
+        children: _foundedUsers.length > 0
             ? ListView.builder(
             itemCount: _foundedUsers.length,
             itemBuilder: (context, index) {
@@ -174,6 +190,35 @@ class _ListHomePageState extends State<ListHomePage2> {
   }
 
   userComponent({required User user}) {
+    Container(
+
+      child: Column(
+        children: [
+          Container(
+            height: 400,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 35
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: const[
+                Center(
+                  child: Text("Total Pesanan",
+                  style: TextStyle(
+                    color: Colors.black,fontSize: 50
+                  ),),
+
+                )
+              ],
+
+            ),
+          )
+        ],
+
+      ),
+    );
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
       padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
@@ -198,7 +243,7 @@ class _ListHomePageState extends State<ListHomePage2> {
                 SizedBox(
                   height: 10,
                 ),
-                Text(user.name,
+                Text(user.username,
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w500
                   ),),
