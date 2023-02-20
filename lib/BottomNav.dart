@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'presentation/pages/dummy/home.dart';
-import 'presentation/pages/dummy/listview_home.dart';
-import 'presentation/pages/dummy/listview_home2.dart';
+import 'presentation/pages/Kasir/home.dart';
+import 'presentation/pages/Kasir/listview_home.dart';
+import 'presentation/pages/Kasir/listview_home2.dart';
+
+import 'presentation/pages/Kasir/checkout.dart';
 
 class HomeBottomNav extends StatefulWidget {
   const HomeBottomNav({super.key});
@@ -15,7 +17,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   final screens = [
     const HomePage(),
     const ListHomePage(),
-    const ListHomePage2()
+    const Checkout()
   ];
 
   @override
@@ -27,18 +29,17 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black38,
-              spreadRadius: 0,
-              blurRadius: 10,
-            )
-          ]
-        ),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black38,
+                spreadRadius: 0,
+                blurRadius: 10,
+              )
+            ]),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
@@ -55,21 +56,21 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
               currentIndex = index;
             }),
             items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              //backgroundColor: Colors.blue
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-              //backgroundColor: Colors.red
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-              //backgroundColor: Colors.green
-            ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                //backgroundColor: Colors.blue
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                //backgroundColor: Colors.red
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
+                //backgroundColor: Colors.green
+              ),
             ],
           ),
         ),
