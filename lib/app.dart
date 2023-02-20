@@ -1,4 +1,4 @@
-import 'package:cafe_wikusama/home.dart';
+import 'package:cafe_wikusama/BottomNav.dart';
 import 'package:cafe_wikusama/presentation/pages/dummy/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_wikusama/presentation/pages/home_page.dart';

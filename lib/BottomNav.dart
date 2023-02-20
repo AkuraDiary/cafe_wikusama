@@ -25,23 +25,36 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
         index: currentIndex,
         children: screens,
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              spreadRadius: 0,
+              blurRadius: 10,
+            )
+          ]
         ),
-
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.orange,
-          unselectedItemColor: Colors.black12,
-          type: BottomNavigationBarType.fixed,
-          iconSize: 28,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          items: const <BottomNavigationBarItem>[
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.0),
+            topRight: Radius.circular(25.0),
+          ),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            selectedItemColor: Colors.orange,
+            unselectedItemColor: Colors.black12,
+            type: BottomNavigationBarType.fixed,
+            iconSize: 24,
+            currentIndex: currentIndex,
+            onTap: (index) => setState(() {
+              currentIndex = index;
+            }),
+            items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
@@ -57,7 +70,8 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
               label: 'Settings',
               //backgroundColor: Colors.green
             ),
-          ],
+            ],
+          ),
         ),
       ),
     );
