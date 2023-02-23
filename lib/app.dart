@@ -6,8 +6,7 @@ import 'package:cafe_wikusama/presentation/pages/Kasir/listview_home.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/listview_home2.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/checkout.dart';
 import 'package:cafe_wikusama/presentation/pages/Manager/Statistict food.dart';
-
-
+import 'package:cafe_wikusama/presentation/pages/Admin/Table_List.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,12 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeBottomNav(),
+      home: TablePage(),
     );
   }
 }
