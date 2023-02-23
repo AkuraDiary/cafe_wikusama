@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:cafe_wikusama/presentation/pages/home_page.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/listview_home.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/listview_home2.dart';
+import 'package:cafe_wikusama/presentation/pages/Kasir/checkout.dart';
+import 'package:cafe_wikusama/presentation/pages/Manager/Statistict food.dart';
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

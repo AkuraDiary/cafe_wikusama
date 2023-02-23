@@ -238,7 +238,7 @@ class _ListHomePageState extends State<ListHomePage2> {
                 Text(
                   "User, Date",
                   style: TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w200
+                      fontSize: 12, fontWeight: FontWeight.w300
                   ),
 
                 )

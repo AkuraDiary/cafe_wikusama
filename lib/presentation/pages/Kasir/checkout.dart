@@ -127,6 +127,7 @@ class _CheckoutState extends State<Checkout> {
         ),
         body: Column(
           children: [
+
             Container(
               height: sizedevice - 20,
               color: Colors.white,
