@@ -207,7 +207,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-        ));
+        ),
+      );
   }
 
   userComponent({required User user}) {
