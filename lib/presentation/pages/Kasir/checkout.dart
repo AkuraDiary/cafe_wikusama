@@ -84,62 +84,36 @@ class _CheckoutState extends State<Checkout> {
     });
   }
 
+  String dropdownvalue = 'Item 1';
+
+  var items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+
   @override
   Widget build(BuildContext context) {
     final sizedevice = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          actions: [
-            IconButton(
-              icon: Icon(
-                MyFlutterApp.sliders_h,
-                color: Colors.black,
-                size: 25,
-              ),
-              onPressed: () {
-                print("Test");
-              },
-            )
-          ],
-          backgroundColor: Colors.white,
-          title: Container(
-            height: 38,
-            margin: EdgeInsets.only(top: 10),
-            child: TextField(
-              onChanged: (value) => onSearch(value),
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  contentPadding: EdgeInsets.all(0),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide.none),
-                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-                  hintText: "Customers cari apa?"),
-            ),
-          ),
-        ),
-        body: Column(
-          children: [
-            Container(
-              height: sizedevice - 20,
-              color: Colors.white,
-              child: _foundedUsers.length > 0
-                  ? ListView.builder(
-                      itemCount: _foundedUsers.length,
-                      itemBuilder: (context, index) {
-                        return Slidable(
-                          actionPane: SlidableDrawerActionPane(),
-                          actionExtentRatio: 0.25,
-                          child: userComponent(user: _foundedUsers[index]),
-                          actions: <Widget>[
-                            /*new IconSlideAction(
+      body: Column(
+        children: [
+          Container(
+            height: sizedevice + 80,
+            color: Colors.white,
+            child: _foundedUsers.length > 0
+                ? ListView.builder(
+                    itemCount: _foundedUsers.length,
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        actionPane: SlidableDrawerActionPane(),
+                        actionExtentRatio: 0.25,
+                        child: userComponent(user: _foundedUsers[index]),
+                        actions: <Widget>[
+                          /*new IconSlideAction(
                             caption: 'Archive',
                             color: Colors.transparent,
                             icon: Icons.archive,
@@ -151,9 +125,9 @@ class _CheckoutState extends State<Checkout> {
                             icon: Icons.share,
                             onTap: () => print('Share'),
                           ),*/
-                          ],
-                          secondaryActions: <Widget>[
-                            /*new IconSlideAction(
+                        ],
+                        secondaryActions: <Widget>[
+                          /*new IconSlideAction(
                             caption: 'More',
                             color: Colors.transparent,
                             icon: Icons.more_horiz,
@@ -165,26 +139,199 @@ class _CheckoutState extends State<Checkout> {
                             icon: Icons.delete,
                             onTap: () => print('Delete'),
                           ),*/
-                          ],
+                        ],
+                      );
+                    })
+                : Center(
+                    child: Text(
+                    "No users found",
+                    style: TextStyle(color: Colors.black),
+                  )),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            height: 10,
+            color: Colors.black,
+            thickness: 2,
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            // decoration: BoxDecoration(
+            //   border: Border.all(
+            //     color: Colors.black,
+            //     width: 1.0,
+            //   ),
+            // ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'Ringkasan Pembayaran',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'PIZZA APA HAYO',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'PIZZA APA HAYO',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'PIZZA APA HAYO',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      'Meja',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Rp. 90.000,00',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Rp. 90.000,00',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Rp. 90.000,00',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    DropdownButton(
+                      value: dropdownvalue,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
                         );
-                      })
-                  : Center(
-                      child: Text(
-                      "No users found",
-                      style: TextStyle(color: Colors.black),
-                    )),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1.0,
+                      }).toList(),
+                      onChanged: (String? newValue){
+                        setState(() {
+                          
+                        });
+                      },
+                    )
+                  ],
                 )
-              ),
+              ],
             ),
-          ],
+          ),
+        ],
+      ),
+        floatingActionButton: Container(
+          padding: EdgeInsets.only(
+            left: 10,
+            right: 10, 
+          ),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 1.0),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+          color: Colors.white,
         ),
-      );
+          width: sizedevice - 30,
+          height: 80,
+          
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '  Save Order',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18
+                ),
+              ),
+              Text(
+                'Checkout  ',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18
+                ),
+              )
+            ],
+          ),
+        ),
+    );
   }
 
   userComponent({required User user}) {

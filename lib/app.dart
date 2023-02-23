@@ -1,4 +1,5 @@
 import 'package:cafe_wikusama/BottomNav.dart';
+import 'package:cafe_wikusama/presentation/pages/Kasir/checkout.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_wikusama/presentation/pages/home_page.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeBottomNav(),
+      home: Checkout(),
     );
   }
 }

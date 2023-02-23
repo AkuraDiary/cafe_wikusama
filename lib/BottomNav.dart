@@ -17,7 +17,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   final screens = [
     const HomePage(),
     const ListHomePage(),
-    const Checkout()
+    const ListHomePage2()
   ];
 
   @override
@@ -58,17 +58,17 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: 'Home',
+                label: '',
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: 'Profile',
+                label: '',
                 //backgroundColor: Colors.red
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'Settings',
+                label: '',
                 //backgroundColor: Colors.green
               ),
             ],
