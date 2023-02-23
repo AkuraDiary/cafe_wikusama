@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'presentation/pages/Kasir/home.dart';
 import 'presentation/pages/Kasir/listview_home.dart';
 import 'presentation/pages/Kasir/listview_home2.dart';
-
+import 'presentation/pages/Manager/Statistict food.dart';
 import 'presentation/pages/Kasir/checkout.dart';
 
 class HomeBottomNav extends StatefulWidget {

@@ -99,21 +99,58 @@ class _CheckoutState extends State<Checkout> {
     final sizedevice = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: sizedevice + 80,
-            color: Colors.white,
-            child: _foundedUsers.length > 0
-                ? ListView.builder(
-                    itemCount: _foundedUsers.length,
-                    itemBuilder: (context, index) {
-                      return Slidable(
-                        actionPane: SlidableDrawerActionPane(),
-                        actionExtentRatio: 0.25,
-                        child: userComponent(user: _foundedUsers[index]),
-                        actions: <Widget>[
-                          /*new IconSlideAction(
+        appBar: AppBar(
+          elevation: 0,
+          actions: [
+            IconButton(
+              icon: Icon(
+                MyFlutterApp.sliders_h,
+                color: Colors.black,
+                size: 25,
+              ),
+              onPressed: () {
+                print("Test");
+              },
+            )
+          ],
+          backgroundColor: Colors.white,
+          title: Container(
+            height: 38,
+            margin: EdgeInsets.only(top: 10),
+            child: TextField(
+              onChanged: (value) => onSearch(value),
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  contentPadding: EdgeInsets.all(0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide.none),
+                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
+                  hintText: "Customers cari apa?"),
+            ),
+          ),
+        ),
+        body: Column(
+          children: [
+
+            Container(
+              height: sizedevice - 20,
+              color: Colors.white,
+              child: _foundedUsers.length > 0
+                  ? ListView.builder(
+                      itemCount: _foundedUsers.length,
+                      itemBuilder: (context, index) {
+                        return Slidable(
+                          actionPane: SlidableDrawerActionPane(),
+                          actionExtentRatio: 0.25,
+                          child: userComponent(user: _foundedUsers[index]),
+                          actions: <Widget>[
+                            /*new IconSlideAction(
                             caption: 'Archive',
                             color: Colors.transparent,
                             icon: Icons.archive,
