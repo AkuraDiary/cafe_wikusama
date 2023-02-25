@@ -358,12 +358,233 @@ class _CheckoutState extends State<Checkout> {
                   fontSize: 18
                 ),
               ),
-              Text(
-                'Checkout  ',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18
+              TextButton(
+                child: Text(
+                  'Checkout',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18
+                  ),
                 ),
+                onPressed: (){
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          backgroundColor: Colors.white,
+                          alignment: Alignment.center,
+                          content: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.check,
+                                size: 56,
+                                color: Colors.green,
+                              ),
+                              SizedBox(height: 20,),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                color: Color(0xFFF3F3F3),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Center(
+                                        child: Text(
+                                          'Pizza APA Hayo\n Jl.wwwwwwwww,wwwwww,wwww\n Jawa wwww,0000',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 14
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 5,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'No order',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w200,
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                        Text(
+                                          '01/02/3245',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w200,
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                        Text(
+                                          'No order',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w200,
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 5,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Cashier Name',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w200,
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                        Text(
+                                          'User Number',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w200,
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 25,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(
+                                              '1 x 90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              'Pizza Hayo Mozza',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              '1 x 90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              'Pizza Hayo Double',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              '1 x 90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              'Pizza Hayo Apa',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              'Rp.90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              '',
+                                            ),
+                                            Text(
+                                              'Rp.90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              '',
+                                            ),
+                                            Text(
+                                              'Rp.90000',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 12
+                                              ),
+                                            ),
+                                            Text(
+                                              '',
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    Divider(
+                                      height: 5,
+                                      color: Colors.black,
+                                    ),
+                                    SizedBox(height: 15,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Cash',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Rp.270000',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 25,),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'CS 090807060504030201',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Terimakasih',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15,
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      });
+                }, 
               )
             ],
           ),

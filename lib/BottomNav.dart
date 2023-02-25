@@ -18,7 +18,7 @@ class KasirBottomNav extends StatefulWidget {
 class _KasirBottomNavState extends State<KasirBottomNav> {
   int currentIndex = 0;
   final screens = [
-    const HomePage(),
+    const Checkout(),
     const ListHomePage(),
     const ListHomePage2()
   ];
