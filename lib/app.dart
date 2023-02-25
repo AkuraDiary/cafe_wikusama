@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.amber,
+        ),
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
+      ),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TablePage(),
+      home: AdminBottomNav(),
     );
   }
 }
