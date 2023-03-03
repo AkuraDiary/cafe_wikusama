@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
-import 'package:cafe_wikusama/presentation/pages/Kasir/model.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/Model.dart';
 
 class UserList extends StatefulWidget {
   const UserList({Key? key}) : super(key: key);
@@ -11,60 +11,60 @@ class UserList extends StatefulWidget {
 }
 
 class _UserListState extends State<UserList> {
-  List<User> _ModelUser = [
-    User(
+  List<ModelUser> _ModelUser = [
+    ModelUser(
         'Elliana Palacios',
         '@elliana',
-        'Kasir',
-        false),
-    User(
+        'Kasir'
+    ),
+    ModelUser(
         'Kayley Dwyer',
         '@kayley',
-        'Manager',
-        false),
-    User(
+        'Manager'
+    ),
+    ModelUser(
         'Kathleen Mcdonough',
         '@kathleen',
         'Admin',
-        false),
-    User(
+    ),
+    ModelUser(
         'Kathleen Dyer',
         '@kathleen',
         'Admin',
-        false),
-    User(
+    ),
+    ModelUser(
         'Mikayla Marquez',
         '@mikayla',
         'Manager',
-        false),
-    User(
+   ),
+    ModelUser(
         'Kiersten Lange',
         '@kiersten',
         'Kasir',
-        false),
-    User(
+    ),
+    ModelUser(
         'Carys Metz',
         '@metz',
         'Admin',
-         false),
-    User(
+    ),
+    ModelUser(
         'Ignacio Schmidt',
         '@schmidt',
         'Admin',
-        false),
-    User(
+        ),
+    ModelUser(
         'Clyde Lucas',
         '@clyde',
         'Manager',
-        false),
-    User(
+        ),
+    ModelUser(
         'Mikayla Marquez',
         '@mikayla',
         'Kasir',
-        false)
+        )
   ];
 
-  List<User> _foundedUsers = [];
+  List<ModelUser> _foundedUsers = [];
 
   @override
   void initState() {
@@ -96,7 +96,7 @@ class _UserListState extends State<UserList> {
           height: 38,
           margin: EdgeInsets.only(top: 10),
           child: Text(
-            "Food List",
+            "User List",
             style: TextStyle(color: Colors.black,fontSize: 30),
           ),
         ),
@@ -162,7 +162,7 @@ class _UserListState extends State<UserList> {
     );
   }
 
-  userComponent({required User user}) {
+  userComponent({required ModelUser user}) {
     final sizedevicewidth = MediaQuery.of(context).size.width;
 
     return Container(
@@ -180,13 +180,19 @@ class _UserListState extends State<UserList> {
             Container(
                 width: 110,
                 height: 110,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: Image.network(user.image),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.account_circle,
+                    color: Colors.orange,
+                    size: 100,
+                  ),
+                  onPressed: (){
+                    print("Test");
+                  },
                 )),
             SizedBox(width: 10),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("PIZZA APA HAYO",
+              Text(user.name,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -194,44 +200,30 @@ class _UserListState extends State<UserList> {
               SizedBox(
                 height: 5,
               ),
-              Text("Deskripsi Produk",
-                  style: TextStyle(color: Colors.grey[500], fontSize: 12)),
+              Text("Password :" + user.password,
+                  style: TextStyle(color: Colors.black, fontSize: 12)),
               SizedBox(
-                height: 25,
+                height: 5,
               ),
-              Text(
-                "Rp. ",
-                style: TextStyle(color: Colors.amber),
+              Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Role : ",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.grey,
+                    child: Text(
+                        user.role
+                    ),
+                  )
+                ],
               ),
             ])
           ]),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                user.addItem = !user.addItem;
-              });
-            },
-            child: AnimatedContainer(
-                height: 35,
-                width: 70,
-                duration: Duration(milliseconds: 300),
-                decoration: BoxDecoration(
-                    color:
-                    user.addItem ? Colors.transparent : Colors.transparent,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: user.addItem
-                          ? Colors.transparent
-                          : Colors.transparent,
-                    )),
-                child: Center(
-                    child: Text(user.addItem ? 'Edited' : 'Edit',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color:
-                            user.addItem ? Colors.black : Colors.black)))),
-          )
+
         ],
       ),
     );
