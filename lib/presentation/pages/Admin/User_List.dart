@@ -12,59 +12,63 @@ class UserList extends StatefulWidget {
 
 class _UserListState extends State<UserList> {
   List<ModelUser> _ModelUser = [
+    ModelUser('Elliana Palacios', '@elliana', 'Kasir'),
+    ModelUser('Kayley Dwyer', '@kayley', 'Manager'),
     ModelUser(
-        'Elliana Palacios',
-        '@elliana',
-        'Kasir'
+      'Kathleen Mcdonough',
+      '@kathleen',
+      'Admin',
     ),
     ModelUser(
-        'Kayley Dwyer',
-        '@kayley',
-        'Manager'
+      'Kathleen Dyer',
+      '@kathleen',
+      'Admin',
     ),
     ModelUser(
-        'Kathleen Mcdonough',
-        '@kathleen',
-        'Admin',
+      'Mikayla Marquez',
+      '@mikayla',
+      'Manager',
     ),
     ModelUser(
-        'Kathleen Dyer',
-        '@kathleen',
-        'Admin',
+      'Kiersten Lange',
+      '@kiersten',
+      'Kasir',
     ),
     ModelUser(
-        'Mikayla Marquez',
-        '@mikayla',
-        'Manager',
-   ),
-    ModelUser(
-        'Kiersten Lange',
-        '@kiersten',
-        'Kasir',
+      'Carys Metz',
+      '@metz',
+      'Admin',
     ),
     ModelUser(
-        'Carys Metz',
-        '@metz',
-        'Admin',
+      'Ignacio Schmidt',
+      '@schmidt',
+      'Admin',
     ),
     ModelUser(
-        'Ignacio Schmidt',
-        '@schmidt',
-        'Admin',
-        ),
+      'Clyde Lucas',
+      '@clyde',
+      'Manager',
+    ),
     ModelUser(
-        'Clyde Lucas',
-        '@clyde',
-        'Manager',
-        ),
-    ModelUser(
-        'Mikayla Marquez',
-        '@mikayla',
-        'Kasir',
-        )
+      'Mikayla Marquez',
+      '@mikayla',
+      'Kasir',
+    )
   ];
 
   List<ModelUser> _foundedUsers = [];
+
+  bool _isObsecure = true;
+
+  String dropdownvalue = 'Item 1';
+
+  var items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
 
   @override
   void initState() {
@@ -78,9 +82,9 @@ class _UserListState extends State<UserList> {
 
   onSearch(String search) {
     setState(() {
-      _foundedUsers = _ModelUser
-          .where((user) => user.name.toLowerCase().contains(search))
-          .toList();
+      _foundedUsers =
+          _ModelUser.where((user) => user.name.toLowerCase().contains(search))
+              .toList();
     });
   }
 
@@ -96,20 +100,155 @@ class _UserListState extends State<UserList> {
           height: 38,
           margin: EdgeInsets.only(top: 10),
           child: Text(
-            "User List",
-            style: TextStyle(color: Colors.black,fontSize: 30),
+            "Food List",
+            style: TextStyle(color: Colors.black, fontSize: 30),
           ),
         ),
         actions: [
-          IconButton(
-            icon : Icon(
-              Icons.add,
-              size: 30,
-              color: Colors.black,
+          TextButton.icon(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.white),
             ),
-            onPressed: (){
-              print("Test");
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      backgroundColor: Colors.white,
+                      alignment: Alignment.center,
+                      title: Text(
+                        'Add User',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23),
+                        textAlign: TextAlign.center,
+                      ),
+                      content: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber,
+                                fixedSize: const Size(100, 100),
+                                shape: const CircleBorder(),
+                              ),
+                              onPressed: () {},
+                              child: const Text('+',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 32,
+                                  ))),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Username',
+                              enabled: true,
+                              contentPadding: const EdgeInsets.only(
+                                  left: 14.0, bottom: 8.0, top: 8.0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.black),
+                                borderRadius: new BorderRadius.circular(10),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.black),
+                                borderRadius: new BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          TextFormField(
+                            obscureText: _isObsecure,
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Password',
+                              enabled: true,
+                              contentPadding: const EdgeInsets.only(
+                                  left: 14.0, bottom: 8.0, top: 8.0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.black),
+                                borderRadius: new BorderRadius.circular(10),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.black),
+                                borderRadius: new BorderRadius.circular(10),
+                              ),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isObsecure = !_isObsecure;
+                                  });
+                                },
+                                icon: _isObsecure
+                                    ? const Icon(Icons.visibility)
+                                    : const Icon(Icons.visibility_off),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Text(
+                                  'Role :',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                              DropdownButton(
+                                value: dropdownvalue,
+                                icon: const Icon(Icons.keyboard_arrow_down),
+                                items: items.map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(items),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {});
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 45,
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: Container(
+                                child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.amber),
+                              ),
+                              child: Text('Submit'),
+                              onPressed: () {},
+                            )),
+                          )
+                        ],
+                      ),
+                    );
+                  });
             },
+            icon: Icon(
+              Icons.add,
+              color: Colors.black,
+              size: 26,
+            ),
+            label: Text(''),
           )
         ],
       ),
@@ -117,14 +256,14 @@ class _UserListState extends State<UserList> {
         color: Colors.white,
         child: _foundedUsers.length > 0
             ? ListView.builder(
-            itemCount: _foundedUsers.length,
-            itemBuilder: (context, index) {
-              return Slidable(
-                actionPane: SlidableDrawerActionPane(),
-                actionExtentRatio: 0.25,
-                child: userComponent(user: _foundedUsers[index]),
-                actions: <Widget>[
-                  /*new IconSlideAction(
+                itemCount: _foundedUsers.length,
+                itemBuilder: (context, index) {
+                  return Slidable(
+                    actionPane: SlidableDrawerActionPane(),
+                    actionExtentRatio: 0.25,
+                    child: userComponent(user: _foundedUsers[index]),
+                    actions: <Widget>[
+                      /*new IconSlideAction(
                         caption: 'Archive',
                         color: Colors.transparent,
                         icon: Icons.archive,
@@ -136,28 +275,177 @@ class _UserListState extends State<UserList> {
                         icon: Icons.share,
                         onTap: () => print('Share'),
                       ),*/
-                ],
-                secondaryActions: <Widget>[
-                  /*new IconSlideAction(
-                        caption: 'More',
-                        color: Colors.transparent,
-                        icon: Icons.more_horiz,
-                        onTap: () => print('More'),
-                      ),
+                    ],
+                    secondaryActions: <Widget>[
                       new IconSlideAction(
-                        caption: 'Delete',
-                        color: Colors.transparent,
-                        icon: Icons.delete,
-                        onTap: () => print('Delete'),
-                      ),*/
-                ],
-              );
-            })
+                        caption: 'Edit',
+                        color: Colors.white,
+                        icon: Icons.edit,
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  alignment: Alignment.center,
+                                  title: Text(
+                                    'Add User',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 23),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.amber,
+                                            fixedSize: const Size(100, 100),
+                                            shape: const CircleBorder(),
+                                          ),
+                                          onPressed: () {},
+                                          child: const Text('',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 32,
+                                              ))),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          hintText: 'Username',
+                                          enabled: true,
+                                          contentPadding: const EdgeInsets.only(
+                                              left: 14.0,
+                                              bottom: 8.0,
+                                              top: 8.0),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.black),
+                                            borderRadius:
+                                                new BorderRadius.circular(10),
+                                          ),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.black),
+                                            borderRadius:
+                                                new BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      TextFormField(
+                                        obscureText: _isObsecure,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          hintText: 'Password',
+                                          enabled: true,
+                                          contentPadding: const EdgeInsets.only(
+                                              left: 14.0,
+                                              bottom: 8.0,
+                                              top: 8.0),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.black),
+                                            borderRadius:
+                                                new BorderRadius.circular(10),
+                                          ),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.black),
+                                            borderRadius:
+                                                new BorderRadius.circular(10),
+                                          ),
+                                          suffixIcon: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                _isObsecure = !_isObsecure;
+                                              });
+                                            },
+                                            icon: _isObsecure
+                                                ? const Icon(Icons.visibility)
+                                                : const Icon(
+                                                    Icons.visibility_off),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                              left: 20,
+                                            ),
+                                            child: Text(
+                                              'Role :',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ),
+                                          DropdownButton(
+                                            value: dropdownvalue,
+                                            icon: const Icon(
+                                                Icons.keyboard_arrow_down),
+                                            items: items.map((String items) {
+                                              return DropdownMenuItem(
+                                                value: items,
+                                                child: Text(items),
+                                              );
+                                            }).toList(),
+                                            onChanged: (String? newValue) {
+                                              setState(() {
+                                                items = items;
+                                              });
+                                            },
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 45,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: Container(
+                                            child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.amber),
+                                          ),
+                                          child: Text('Submit'),
+                                          onPressed: () {},
+                                        )),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              });
+                        },
+                      ),
+                    ],
+                  );
+                })
             : Center(
-            child: Text(
-              "No users found",
-              style: TextStyle(color: Colors.black),
-            )),
+                child: Text(
+                "No users found",
+                style: TextStyle(color: Colors.black),
+              )),
       ),
     );
   }
@@ -186,7 +474,7 @@ class _UserListState extends State<UserList> {
                     color: Colors.orange,
                     size: 100,
                   ),
-                  onPressed: (){
+                  onPressed: () {
                     print("Test");
                   },
                 )),
@@ -215,15 +503,12 @@ class _UserListState extends State<UserList> {
                   ),
                   Container(
                     color: Colors.grey,
-                    child: Text(
-                        user.role
-                    ),
+                    child: Text(user.role),
                   )
                 ],
               ),
             ])
           ]),
-
         ],
       ),
     );
