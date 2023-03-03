@@ -87,43 +87,31 @@ class _FoodListState extends State<FoodList> {
   @override
   Widget build(BuildContext context) {
     final sizedevice = MediaQuery.of(context).size.width;
-
     return Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          actions: [
-            IconButton(
-              icon: Icon(
-                MyFlutterApp.sliders_h,
-                color: Colors.black,
-                size: 25,
-              ),
-              onPressed: () {
-                print("Test");
-              },
-            )
-          ],
+          centerTitle: true,
           backgroundColor: Colors.white,
+          elevation: 0,
           title: Container(
             height: 38,
             margin: EdgeInsets.only(top: 10),
-            child: TextField(
-              onChanged: (value) => onSearch(value),
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  contentPadding: EdgeInsets.all(0),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide.none),
-                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-                  hintText: "Customers cari apa?"),
+            child: Text(
+              "Food List",
+              style: TextStyle(color: Colors.black,fontSize: 30),
             ),
           ),
+          actions: [
+            IconButton(
+                icon : Icon(
+                  Icons.add,
+                  size: 30,
+                  color: Colors.black,
+                ),
+              onPressed: (){
+                  print("Test");
+              },
+            )
+          ],
         ),
         body: Container(
           color: Colors.white,
@@ -237,7 +225,7 @@ class _FoodListState extends State<FoodList> {
                           : Colors.transparent,
                     )),
                 child: Center(
-                    child: Text(user.addItem ? 'Added' : 'Add',
+                    child: Text(user.addItem ? 'Edited' : 'Edit',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
