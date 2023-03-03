@@ -94,7 +94,7 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
   final screens = [
     const TableList(),
     const FoodList(),
-    const HomePage()
+    const UserList()
   ];
 
   @override
