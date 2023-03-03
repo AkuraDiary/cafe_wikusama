@@ -150,17 +150,15 @@ class _TableListState extends State<TableList> {
             label: Text(''),
           )
         ],
-        backgroundColor: Colors.transparent,
-        title: Container(
-          child: Text(
-            'Table List',
-            style: TextStyle(
-              color: Colors.black,
+          backgroundColor: Colors.white,
+          title: Container(
+            height: 38,
+            margin: EdgeInsets.only(top: 10),
+            child: Text(
+              "Table List",
+              style: TextStyle(color: Colors.black,fontSize: 30),
             ),
           ),
-          height: 38,
-          margin: EdgeInsets.only(top: 10),
-        ),
       ),
       body: Container(
         color: Colors.white,
