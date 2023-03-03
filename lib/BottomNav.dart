@@ -139,12 +139,12 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.fastfood),
                 label: '',
                 //backgroundColor: Colors.red
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.person),
                 label: '',
                 //backgroundColor: Colors.green
               ),
