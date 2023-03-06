@@ -12,7 +12,6 @@ class HistoryPesanan extends StatefulWidget {
 
 class _HistoryPesananState extends State<HistoryPesanan> {
 
-  List<ModelPesanan> _foundedUsers = [];
   List<ModelPesanan> _foundedMenu = [];
   List<ModelPesanan> _users = [
     ModelPesanan(
@@ -95,7 +94,7 @@ class _HistoryPesananState extends State<HistoryPesanan> {
         title: Container(
           height: 38,
           child: Text(
-            "Pesanan",
+            "History",
             style: TextStyle(color: Colors.black,fontSize: 30),
           ),
         ),
@@ -115,14 +114,14 @@ class _HistoryPesananState extends State<HistoryPesanan> {
       ),
       body: Container(
         color: Colors.white,
-        child: _foundedUsers.length > 0
+        child: _foundedMenu.length > 0
             ? ListView.builder(
-            itemCount: _foundedUsers.length,
+            itemCount: _foundedMenu.length,
             itemBuilder: (context, index) {
               return Slidable(
                 actionPane: SlidableDrawerActionPane(),
                 actionExtentRatio: 0.25,
-                child: historyCard(user: _foundedUsers[index]),
+                child: historyCard(user: _foundedMenu[index]),
               );
             })
             : Center(

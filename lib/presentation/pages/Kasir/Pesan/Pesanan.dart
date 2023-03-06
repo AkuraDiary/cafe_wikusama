@@ -11,7 +11,6 @@ class Pesanan extends StatefulWidget {
 }
 
 class _PesananState extends State<Pesanan> {
-  List<ModelPesanan> _foundedUsers = [];
   List<ModelPesanan> _foundedMenu = [];
 
   List<ModelPesanan> _users = [
@@ -115,14 +114,14 @@ class _PesananState extends State<Pesanan> {
       ),
       body: Container(
         color: Colors.white,
-        child: _foundedUsers.length > 0
+        child: _foundedMenu.length > 0
             ? ListView.builder(
-            itemCount: _foundedUsers.length,
+            itemCount: _foundedMenu.length,
             itemBuilder: (context, index) {
               return Slidable(
                 actionPane: SlidableDrawerActionPane(),
                 actionExtentRatio: 0.25,
-                child: pesananCard(user: _foundedUsers[index]),
+                child: pesananCard(user: _foundedMenu[index]),
                );
             })
             : Center(

@@ -67,7 +67,7 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.timelapse_outlined),
                 label: '',
                 //backgroundColor: Colors.red
               ),

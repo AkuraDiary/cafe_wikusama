@@ -89,7 +89,7 @@ class _UserListState extends State<UserList> {
           height: 38,
           margin: EdgeInsets.only(top: 10),
           child: Text(
-            "Food List",
+            "User List",
             style: TextStyle(color: Colors.black, fontSize: 30),
           ),
         ),
