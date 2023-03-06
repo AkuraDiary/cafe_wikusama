@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
-import 'model.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import '../Model.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({Key? key}) : super(key: key);

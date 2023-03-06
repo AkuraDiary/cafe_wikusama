@@ -1,75 +1,75 @@
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'model_list.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import '../Model.dart';
 
-class ListHomePage2 extends StatefulWidget {
-  const ListHomePage2({Key? key}) : super(key: key);
+class HistoryPesanan extends StatefulWidget {
+  const HistoryPesanan({Key? key}) : super(key: key);
 
   @override
-  _ListHomePageState createState() => _ListHomePageState();
+  _HistoryPesananState createState() => _HistoryPesananState();
 }
 
-class _ListHomePageState extends State<ListHomePage2> {
+class _HistoryPesananState extends State<HistoryPesanan> {
 
-  List<User> _foundedUsers = [];
-  List<User> _foundedMenu = [];
-  List<User> _users = [
-    User(
+  List<ModelPesanan> _foundedUsers = [];
+  List<ModelPesanan> _foundedMenu = [];
+  List<ModelPesanan> _users = [
+    ModelPesanan(
         '01',
         'Elliana Palacios',
         '@elliana',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '02',
         'Kayley Dwyer',
         '@kayley',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '03',
         'Kathleen Mcdonough',
         '@kathleen',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '04',
         'Kathleen Dyer',
         '@kathleen',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '05',
         'Mikayla Marquez',
         '@mikayla',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '06',
         'Kiersten Lange',
         '@kiersten',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '07',
         'Carys Metz',
         '@metz',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '08',
         'Ignacio Schmidt',
         '@schmidt',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '09',
         'Clyde Lucas',
         '@clyde',
         'Rp 270000',
         false),
-    User(
+    ModelPesanan(
         '10',
         'Mikayla Marquez',
         '@mikayla',
@@ -79,21 +79,9 @@ class _ListHomePageState extends State<ListHomePage2> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     setState(() {
-      _foundedUsers = _users;
       _foundedMenu = _users;
-    });
-  }
-
-
-  onSearch(String search) {
-    setState(() {
-      _foundedUsers = _users
-          .where((user) => user.name.toLowerCase().contains(search))
-          .toList();
     });
   }
 
@@ -112,6 +100,7 @@ class _ListHomePageState extends State<ListHomePage2> {
           ),
         ),
         actions: [
+          //Filter Icon
           IconButton(
             icon: Icon(
               MyFlutterApp.sliders_h,
@@ -133,35 +122,7 @@ class _ListHomePageState extends State<ListHomePage2> {
               return Slidable(
                 actionPane: SlidableDrawerActionPane(),
                 actionExtentRatio: 0.25,
-                child: userComponent(user: _foundedUsers[index]),
-                //   actions: <Widget>[
-                //     new IconSlideAction(
-                //       caption: 'Archive',
-                //       color: Colors.transparent,
-                //       icon: Icons.archive,
-                //       onTap: () => print("archive"),
-                //     ),
-                //     new IconSlideAction(
-                //       caption: 'Share',
-                //       color: Colors.transparent,
-                //       icon: Icons.share,
-                //       onTap: () => print('Share'),
-                //     ),
-                //   ],
-                //   secondaryActions: <Widget>[
-                //     new IconSlideAction(
-                //       caption: 'More',
-                //       color: Colors.transparent,
-                //       icon: Icons.more_horiz,
-                //       onTap: () => print('More'),
-                //     ),
-                //     new IconSlideAction(
-                //       caption: 'Delete',
-                //       color: Colors.transparent,
-                //       icon: Icons.delete,
-                //       onTap: () => print('Delete'),
-                //     ),
-                //   ],
+                child: historyCard(user: _foundedUsers[index]),
               );
             })
             : Center(
@@ -173,7 +134,7 @@ class _ListHomePageState extends State<ListHomePage2> {
     );
   }
 
-  userComponent({required User user}) {
+  historyCard({required ModelPesanan user}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
       padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'presentation/pages/Kasir/home.dart';
-import 'presentation/pages/Kasir/listview_home.dart';
-import 'presentation/pages/Kasir/listview_home2.dart';
-import 'presentation/pages/Manager/Statistict food.dart';
-import 'presentation/pages/Kasir/checkout.dart';
-import 'presentation/pages/Admin/Food_List.dart';
-import 'presentation/pages/Admin/Table_List.dart';
-import 'presentation/pages/Admin/User_List.dart';
+
+import 'presentation/pages/Kasir/Menu/Menu.dart';
+import 'presentation/pages/Kasir/Pesan/Pesanan.dart';
+import 'presentation/pages/Kasir/Riwayat/HistoryPesanan.dart';
+import 'presentation/pages/Kasir/Checkout/Checkout.dart';
+
+import 'presentation/pages/Admin/FoodList/Food_List.dart';
+import 'presentation/pages/Admin/TableList/Table_List.dart';
+import 'presentation/pages/Admin/UserList/User_List.dart';
 
 class KasirBottomNav extends StatefulWidget {
   const KasirBottomNav({super.key});
@@ -18,9 +19,10 @@ class KasirBottomNav extends StatefulWidget {
 class _KasirBottomNavState extends State<KasirBottomNav> {
   int currentIndex = 0;
   final screens = [
-    const Checkout(),
-    const ListHomePage(),
-    const ListHomePage2()
+    const Menu(),
+    const Pesanan(),
+    const HistoryPesanan(),
+    //const Checkout()
   ];
 
   @override

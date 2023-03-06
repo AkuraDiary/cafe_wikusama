@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
-import 'model.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import '../Model.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Menu extends StatefulWidget {
+  const Menu({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _MenuState createState() => _MenuState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MenuState extends State<Menu> {
   List<User> _users = [
     User(
         'Elliana Palacios',
@@ -68,9 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     setState(() {
       _foundedUsers = _users;
     });
@@ -134,35 +132,7 @@ class _HomePageState extends State<HomePage> {
                     return Slidable(
                       actionPane: SlidableDrawerActionPane(),
                       actionExtentRatio: 0.25,
-                      child: userComponent(user: _foundedUsers[index]),
-                      actions: <Widget>[
-                        /*new IconSlideAction(
-                        caption: 'Archive',
-                        color: Colors.transparent,
-                        icon: Icons.archive,
-                        onTap: () => print("archive"),
-                      ),
-                      new IconSlideAction(
-                        caption: 'Share',
-                        color: Colors.transparent,
-                        icon: Icons.share,
-                        onTap: () => print('Share'),
-                      ),*/
-                      ],
-                      secondaryActions: <Widget>[
-                        /*new IconSlideAction(
-                        caption: 'More',
-                        color: Colors.transparent,
-                        icon: Icons.more_horiz,
-                        onTap: () => print('More'),
-                      ),
-                      new IconSlideAction(
-                        caption: 'Delete',
-                        color: Colors.transparent,
-                        icon: Icons.delete,
-                        onTap: () => print('Delete'),
-                      ),*/
-                      ],
+                      child: menuCard(user: _foundedUsers[index]),
                     );
                   })
               : Center(
@@ -211,9 +181,7 @@ class _HomePageState extends State<HomePage> {
       );
   }
 
-  userComponent({required User user}) {
-    final sizedevicewidth = MediaQuery.of(context).size.width;
-
+  menuCard({required User user}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),

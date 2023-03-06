@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
 import 'package:cafe_wikusama/presentation/pages/Admin/Model.dart';
 
 class UserList extends StatefulWidget {
@@ -72,25 +72,14 @@ class _UserListState extends State<UserList> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     setState(() {
       _foundedUsers = _ModelUser;
     });
   }
 
-  onSearch(String search) {
-    setState(() {
-      _foundedUsers =
-          _ModelUser.where((user) => user.name.toLowerCase().contains(search))
-              .toList();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final sizedevice = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -104,6 +93,7 @@ class _UserListState extends State<UserList> {
             style: TextStyle(color: Colors.black, fontSize: 30),
           ),
         ),
+        //---->>>>> Add User here
         actions: [
           TextButton.icon(
             style: ButtonStyle(
@@ -261,21 +251,7 @@ class _UserListState extends State<UserList> {
                   return Slidable(
                     actionPane: SlidableDrawerActionPane(),
                     actionExtentRatio: 0.25,
-                    child: userComponent(user: _foundedUsers[index]),
-                    actions: <Widget>[
-                      /*new IconSlideAction(
-                        caption: 'Archive',
-                        color: Colors.transparent,
-                        icon: Icons.archive,
-                        onTap: () => print("archive"),
-                      ),
-                      new IconSlideAction(
-                        caption: 'Share',
-                        color: Colors.transparent,
-                        icon: Icons.share,
-                        onTap: () => print('Share'),
-                      ),*/
-                    ],
+                    child: userCard(user: _foundedUsers[index]),
                     secondaryActions: <Widget>[
                       new IconSlideAction(
                         caption: 'Edit',
@@ -450,9 +426,7 @@ class _UserListState extends State<UserList> {
     );
   }
 
-  userComponent({required ModelUser user}) {
-    final sizedevicewidth = MediaQuery.of(context).size.width;
-
+  userCard({required ModelUser user}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
