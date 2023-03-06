@@ -36,7 +36,7 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
               topRight: Radius.circular(30),
               topLeft: Radius.circular(30),
             ),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black38,
                 spreadRadius: 0,
@@ -58,20 +58,20 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
             onTap: (index) => setState(() {
               currentIndex = index;
             }),
-            items: <BottomNavigationBarItem>[
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: '',
+                label: 'Home',
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: '',
+                label: 'Pelanggan',
                 //backgroundColor: Colors.red
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: '',
+                label: 'Pengaturan',
                 //backgroundColor: Colors.green
               ),
             ],
@@ -110,7 +110,7 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
               topRight: Radius.circular(30),
               topLeft: Radius.circular(30),
             ),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black38,
                 spreadRadius: 0,
@@ -132,7 +132,7 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
             onTap: (index) => setState(() {
               currentIndex = index;
             }),
-            items: <BottomNavigationBarItem>[
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: '',
