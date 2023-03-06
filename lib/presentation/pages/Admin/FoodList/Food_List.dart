@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
-import 'package:cafe_wikusama/presentation/pages/Kasir/model.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Widgets/addButton.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Widgets/editFood.dart';
+import 'package:cafe_wikusama/presentation/pages/Kasir/Model.dart';
 
 class FoodList extends StatefulWidget {
   const FoodList({Key? key}) : super(key: key);
@@ -68,115 +70,71 @@ class _FoodListState extends State<FoodList> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     setState(() {
       _foundedUsers = _users;
     });
   }
 
-  onSearch(String search) {
-    setState(() {
-      _foundedUsers = _users
-          .where((user) => user.name.toLowerCase().contains(search))
-          .toList();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final sizedevice = MediaQuery.of(context).size.width;
-
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          actions: [
-            IconButton(
-              icon: Icon(
-                MyFlutterApp.sliders_h,
-                color: Colors.black,
-                size: 25,
-              ),
-              onPressed: () {
-                print("Test");
-              },
-            )
-          ],
-          backgroundColor: Colors.white,
-          title: Container(
-            height: 38,
-            margin: EdgeInsets.only(top: 10),
-            child: TextField(
-              onChanged: (value) => onSearch(value),
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  contentPadding: EdgeInsets.all(0),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide.none),
-                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-                  hintText: "Customers cari apa?"),
-            ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Container(
+          height: 38,
+          margin: EdgeInsets.only(top: 10),
+          child: Text(
+            "Food List",
+            style: TextStyle(color: Colors.black, fontSize: 30),
           ),
         ),
-        body: Container(
-          color: Colors.white,
-          child: _foundedUsers.length > 0
-              ? ListView.builder(
-              itemCount: _foundedUsers.length,
-              itemBuilder: (context, index) {
-                return Slidable(
-                  actionPane: SlidableDrawerActionPane(),
-                  actionExtentRatio: 0.25,
-                  child: userComponent(user: _foundedUsers[index]),
-                  actions: <Widget>[
-                    /*new IconSlideAction(
-                        caption: 'Archive',
-                        color: Colors.transparent,
-                        icon: Icons.archive,
-                        onTap: () => print("archive"),
-                      ),
-                      new IconSlideAction(
-                        caption: 'Share',
-                        color: Colors.transparent,
-                        icon: Icons.share,
-                        onTap: () => print('Share'),
-                      ),*/
-                  ],
-                  secondaryActions: <Widget>[
-                    /*new IconSlideAction(
-                        caption: 'More',
-                        color: Colors.transparent,
-                        icon: Icons.more_horiz,
-                        onTap: () => print('More'),
-                      ),
-                      new IconSlideAction(
-                        caption: 'Delete',
-                        color: Colors.transparent,
-                        icon: Icons.delete,
-                        onTap: () => print('Delete'),
-                      ),*/
-                  ],
-                );
-              })
-              : Center(
-              child: Text(
+        actions: [
+          TextButton.icon(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.white),
+            ),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return addFood();
+                    //show create new menu
+                  });
+            },
+            icon: Icon(
+              Icons.add,
+              color: Colors.black,
+              size: 26,
+            ),
+            label: Text(''),
+          )
+        ],
+      ),
+      body: Container(
+        color: Colors.white,
+        child: _foundedUsers.length > 0
+            ? ListView.builder(
+                itemCount: _foundedUsers.length,
+                itemBuilder: (context, index) {
+                  return Slidable(
+                    actionPane: SlidableDrawerActionPane(),
+                    actionExtentRatio: 0.25,
+                    child: foodCard(user: _foundedUsers[index]),
+                  );
+                })
+            : Center(
+                child: Text(
                 "No users found",
                 style: TextStyle(color: Colors.black),
               )),
-        ),
-        );
+      ),
+    );
   }
 
-  userComponent({required User user}) {
-    final sizedevicewidth = MediaQuery.of(context).size.width;
-
+  foodCard({required User user}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -217,32 +175,22 @@ class _FoodListState extends State<FoodList> {
               ),
             ])
           ]),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                user.addItem = !user.addItem;
-              });
+          TextButton(
+            child: Text(
+              'Edit',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return editFood();
+                },
+              );
             },
-            child: AnimatedContainer(
-                height: 35,
-                width: 70,
-                duration: Duration(milliseconds: 300),
-                decoration: BoxDecoration(
-                    color:
-                    user.addItem ? Colors.transparent : Colors.transparent,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: user.addItem
-                          ? Colors.transparent
-                          : Colors.transparent,
-                    )),
-                child: Center(
-                    child: Text(user.addItem ? 'Added' : 'Add',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color:
-                            user.addItem ? Colors.black : Colors.black)))),
           )
         ],
       ),

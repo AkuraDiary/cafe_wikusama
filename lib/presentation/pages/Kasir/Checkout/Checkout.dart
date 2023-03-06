@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cafe_wikusama/presentation/widgets/my_flutter_app_icons.dart';
-import 'model.dart';
+import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import '../Model.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({Key? key}) : super(key: key);
@@ -184,9 +184,6 @@ class _CheckoutState extends State<Checkout> {
                     "No users found",
                     style: TextStyle(color: Colors.black),
                   )),
-          ),
-          SizedBox(
-            height: 10,
           ),
           Divider(
             height: 10,
@@ -635,32 +632,55 @@ class _CheckoutState extends State<Checkout> {
               ),
             ])
           ]),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                user.addItem = !user.addItem;
-              });
-            },
-            child: AnimatedContainer(
-                height: 35,
-                width: 70,
-                duration: Duration(milliseconds: 300),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color:
-                        user.addItem ? Colors.transparent : Colors.transparent,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: user.addItem
-                          ? Colors.transparent
-                          : Colors.transparent,
-                    )),
+                  border: Border.all(color: Colors.black, width: 1.0),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.transparent,
+                ),
                 child: Center(
-                    child: Text(user.addItem ? 'Added' : 'Add',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color:
-                                user.addItem ? Colors.black : Colors.black)))),
+                  child: Text(
+                    '-',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 5,),
+              Center(
+                child: Text(
+                  '1',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+              SizedBox(width: 5,),
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 1.0),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.transparent,
+                ),
+                child: Center(
+                  child: Text(
+                    '+',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           )
         ],
       ),

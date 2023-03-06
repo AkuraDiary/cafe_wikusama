@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'presentation/pages/Kasir/home.dart';
-import 'presentation/pages/Kasir/listview_home.dart';
-import 'presentation/pages/Kasir/listview_home2.dart';
-import 'presentation/pages/Manager/Statistict food.dart';
-import 'presentation/pages/Kasir/checkout.dart';
-import 'presentation/pages/Admin/Food_List.dart';
-import 'presentation/pages/Admin/Table_List.dart';
-import 'presentation/pages/Admin/User_List.dart';
+
+import 'presentation/pages/Kasir/Menu/Menu.dart';
+import 'presentation/pages/Kasir/Pesan/Pesanan.dart';
+import 'presentation/pages/Kasir/Riwayat/HistoryPesanan.dart';
+import 'presentation/pages/Kasir/Checkout/Checkout.dart';
+
+import 'presentation/pages/Admin/FoodList/Food_List.dart';
+import 'presentation/pages/Admin/TableList/Table_List.dart';
+import 'presentation/pages/Admin/UserList/User_List.dart';
 
 class KasirBottomNav extends StatefulWidget {
   const KasirBottomNav({super.key});
@@ -18,9 +19,10 @@ class KasirBottomNav extends StatefulWidget {
 class _KasirBottomNavState extends State<KasirBottomNav> {
   int currentIndex = 0;
   final screens = [
-    const Checkout(),
-    const ListHomePage(),
-    const ListHomePage2()
+    const Menu(),
+    const Pesanan(),
+    const HistoryPesanan(),
+    //const Checkout()
   ];
 
   @override
@@ -61,17 +63,17 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: 'Home',
+                label: '',
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Pelanggan',
+                icon: Icon(Icons.timelapse_outlined),
+                label: '',
                 //backgroundColor: Colors.red
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'Pengaturan',
+                label: '',
                 //backgroundColor: Colors.green
               ),
             ],
@@ -94,7 +96,7 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
   final screens = [
     const TableList(),
     const FoodList(),
-    const HomePage()
+    const UserList()
   ];
 
   @override
@@ -139,12 +141,12 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
                 //backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.fastfood),
                 label: '',
                 //backgroundColor: Colors.red
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.person),
                 label: '',
                 //backgroundColor: Colors.green
               ),
