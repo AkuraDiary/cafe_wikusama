@@ -8,6 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:cafe_wikusama/dependecy_injection.dart' as di;
 
+import 'presentation/pages/Login/login_page.dart';
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
