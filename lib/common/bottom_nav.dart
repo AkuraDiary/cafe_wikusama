@@ -1,4 +1,6 @@
 
+import 'package:cafe_wikusama/presentation/pages/admin/food_list/food_list.dart';
+import 'package:cafe_wikusama/presentation/pages/admin/table_list/table_list.dart';
 import 'package:flutter/material.dart';
 
 import '../presentation/pages/Kasir/Menu/menu.dart';
@@ -93,7 +95,6 @@ class _AdminBottomNavState extends State<AdminBottomNav> {
   final screens = [
     const TableList(),
     const FoodList(),
-    const UserList()
   ];
 
   @override

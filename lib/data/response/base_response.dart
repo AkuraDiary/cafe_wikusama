@@ -10,10 +10,10 @@
   return BaseResponse(status: status, value: value);
   }
 
-  Map<String, dynamic> toJson() {
-  return {
-  'status': status,
-  'value': value.toJson(),
-  };
-  }
+  // Map<String, dynamic> toJson() {
+  // return {
+  // 'status': status,
+  // 'value': value.toJson(),
+  // };
+  // }
   }
