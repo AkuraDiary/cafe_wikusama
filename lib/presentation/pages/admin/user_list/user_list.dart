@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/Model.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/model.dart';
 
 class UserList extends StatefulWidget {
   const UserList({Key? key}) : super(key: key);
@@ -12,47 +12,47 @@ class UserList extends StatefulWidget {
 
 class _UserListState extends State<UserList> {
   List<ModelUser> _ModelUser = [
-    ModelUser('Elliana Palacios', '@elliana', 'Kasir'),
-    ModelUser('Kayley Dwyer', '@kayley', 'Manager'),
+    ModelUser('Elliana Palacios', '@elliana', 'kasir'),
+    ModelUser('Kayley Dwyer', '@kayley', 'manager'),
     ModelUser(
       'Kathleen Mcdonough',
       '@kathleen',
-      'Admin',
+      'admin',
     ),
     ModelUser(
       'Kathleen Dyer',
       '@kathleen',
-      'Admin',
+      'admin',
     ),
     ModelUser(
       'Mikayla Marquez',
       '@mikayla',
-      'Manager',
+      'manager',
     ),
     ModelUser(
       'Kiersten Lange',
       '@kiersten',
-      'Kasir',
+      'kasir',
     ),
     ModelUser(
       'Carys Metz',
       '@metz',
-      'Admin',
+      'admin',
     ),
     ModelUser(
       'Ignacio Schmidt',
       '@schmidt',
-      'Admin',
+      'admin',
     ),
     ModelUser(
       'Clyde Lucas',
       '@clyde',
-      'Manager',
+      'manager',
     ),
     ModelUser(
       'Mikayla Marquez',
       '@mikayla',
-      'Kasir',
+      'kasir',
     )
   ];
 

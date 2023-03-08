@@ -1,6 +1,6 @@
 import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:cafe_wikusama/BottomNav.dart';
+import 'package:cafe_wikusama/common/bottom_nav.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Login(),
-      //Change AdminBottomNav() to display Admin List features without login
+      //Change AdminBottomNav() to display admin List features without login
     );
   }
 }

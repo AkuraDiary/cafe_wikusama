@@ -1,8 +1,8 @@
+import 'package:cafe_wikusama/presentation/pages/admin/food_list/widget/edit_food.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Widgets/addButton.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Widgets/editFood.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/food_list/widget/add_button.dart';
 import 'package:cafe_wikusama/presentation/pages/Kasir/Model.dart';
 
 class FoodList extends StatefulWidget {

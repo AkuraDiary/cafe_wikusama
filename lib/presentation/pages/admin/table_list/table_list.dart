@@ -1,9 +1,10 @@
+
 import 'package:cafe_wikusama/presentation/pages/Admin/TableList/Widgets/addButton.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/TableList/Widgets/editTable.dart';
+import 'package:cafe_wikusama/presentation/pages/admin/table_list/Widgets/editTable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
-import '../Model.dart';
+import '../model.dart';
 
 class TableList extends StatefulWidget {
   const TableList({Key? key}) : super(key: key);

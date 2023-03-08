@@ -1,13 +1,12 @@
+import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Food_List.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/TableList/Table_List.dart';
+import 'package:cafe_wikusama/presentation/pages/Admin/UserList/User_List.dart';
 import 'package:flutter/material.dart';
 
-import 'presentation/pages/Kasir/Menu/Menu.dart';
-import 'presentation/pages/Kasir/Pesan/Pesanan.dart';
-import 'presentation/pages/Kasir/Riwayat/HistoryPesanan.dart';
-import 'presentation/pages/Kasir/Checkout/Checkout.dart';
-
-import 'presentation/pages/Admin/FoodList/Food_List.dart';
-import 'presentation/pages/Admin/TableList/Table_List.dart';
-import 'presentation/pages/Admin/UserList/User_List.dart';
+import '../presentation/pages/Kasir/Menu/menu.dart';
+import '../presentation/pages/Kasir/Pesan/pesanan.dart';
+import '../presentation/pages/Kasir/Riwayat/history_pesanan.dart';
+import '../presentation/pages/Kasir/Checkout/checkout.dart';
 
 class KasirBottomNav extends StatefulWidget {
   const KasirBottomNav({super.key});

@@ -357,7 +357,7 @@ class _CheckoutState extends State<Checkout> {
               ),
               TextButton(
                 child: Text(
-                  'Checkout',
+                  'checkout',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18

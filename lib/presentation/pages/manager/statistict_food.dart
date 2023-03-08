@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_slidable/flutter_slidable.dart';
-// import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
-// import 'package:cafe_wikusama/presentation/pages/Kasir/model_list.dart';
+// import 'package:cafe_wikusama/presentation/assets_for_icon/my_flutter_app_icons.dart';
+// import 'package:cafe_wikusama/presentation/pages/kasir/model_list.dart';
 
 // class StatisticFood extends StatefulWidget {
 //   const StatisticFood({Key? key}) : super(key: key);
