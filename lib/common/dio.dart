@@ -27,7 +27,7 @@ class DioClient {
         // 'User-Agent': userAgent,
         'Accept': 'application/json',
       },
-      contentType: 'multipart/form-data',
+      contentType: 'application/x-www-form-urlencoded',
     );
     Dio dio = Dio(options);
     dio.interceptors.add(dioLoggerInterceptor);

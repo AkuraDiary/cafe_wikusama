@@ -1,17 +1,19 @@
+import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_validator/form_validator.dart';
-
-class Login extends StatefulWidget {
-  const Login(Object object, {super.key});
+import 'package:provider/provider.dart';
+class LoginScreen extends StatefulWidget {
   static const String id = 'lesson';
 
+  const LoginScreen({super.key});
+
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginScreenState extends State<LoginScreen> {
   // Initially password is obscure
   bool isLoading = false;
   bool _obscureText = true;
@@ -27,11 +29,10 @@ class _LoginState extends State<Login> {
       String email = emailController.text;
       String password = passwordController.text;
       Fluttertoast.showToast(msg: "email : $email, password : $password");
-      // Provider.of<AuthNotifier>(context, listen: false).login(
-      //   username: usernameController.text,
-      //   password: passwordController.text,
-      // );
-
+      Provider.of<AuthNotifier>(context, listen: false).login(
+        email: emailController.text,
+        password: passwordController.text,
+      );
     }
     }
 

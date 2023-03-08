@@ -1,4 +1,6 @@
-import 'package:cafe_wikusama/presentation/pages/Login/login_page.dart';
+
+import 'package:cafe_wikusama/domain/usecase/auth/Login.dart';
+import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -22,7 +24,7 @@ void init() {
 
   // use case section
   locator.registerLazySingleton(
-      () => Login(locator(),));
+      () => Login(locator()));
 
   locator.registerSingletonAsync<Dio>(() => DioClient().client());
   locator.registerLazySingleton(() => http.Client());
@@ -34,6 +36,9 @@ void init() {
       authRemoteDataSource: locator(),
     ),
   );
+
+  //notifier section
+  locator.registerFactory(() => AuthNotifier(loginCase: locator()));
 
   //data source section
   locator.registerLazySingleton<AuthRemoteDataSource>(

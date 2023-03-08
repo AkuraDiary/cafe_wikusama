@@ -11,18 +11,27 @@ abstract class AuthRemoteDataSource {
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
   @override
   Future<UserAuthModel> login(String email, String password) async {
-    try{
-      
-      final response = await GetIt.I<Dio>().get("login");
-      if(response.statusCode == 200){
-        return UserAuthModel.fromJson(response.data["values"]);
-      }else{
-        throw RequestFailure(response.statusCode ?? 1, response.statusMessage ?? "");
-      }
+      try{
 
-    } on DioError{
-      throw RequestFailure(-1, "Not Connected");
+        Map<String, String> map = {
+          'email': email,
+          'password': password
+        };
+        print(map);
+        var formData = FormData.fromMap(map);
+
+        // print(formData.fields);
+        final response = await GetIt.I<Dio>().post("login", data: formData);
+        print(response);
+        if(response.statusCode == 200){
+          return UserAuthModel.fromJson(response.data["values"]);
+        }else{
+          throw RequestFailure(response.statusCode ?? 1, response.statusMessage ?? "");
+        }
+
+      } on DioError{
+        throw RequestFailure(-1, "Not Connected");
+      }
     }
-  }
 
 }
