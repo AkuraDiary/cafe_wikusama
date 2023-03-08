@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_validator/form_validator.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  const Login(Object object, {super.key});
   static const String id = 'lesson';
 
   @override
