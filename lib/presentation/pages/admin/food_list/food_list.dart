@@ -1,3 +1,4 @@
+import 'package:cafe_wikusama/data/models/menu_model.dart';
 import 'package:cafe_wikusama/presentation/pages/admin/food_list/widget/edit_food.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -13,57 +14,77 @@ class FoodList extends StatefulWidget {
 }
 
 class _FoodListState extends State<FoodList> {
-  List<User> _users = [
-    User(
-        'Elliana Palacios',
-        '@elliana',
-        'https://images.unsplash.com/photo-1504735217152-b768bcab5ebc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=0ec8291c3fd2f774a365c8651210a18b',
-        false),
-    User(
-        'Kayley Dwyer',
-        '@kayley',
-        'https://images.unsplash.com/photo-1503467913725-8484b65b0715?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=cf7f82093012c4789841f570933f88e3',
-        false),
-    User(
-        'Kathleen Mcdonough',
-        '@kathleen',
-        'https://images.unsplash.com/photo-1507081323647-4d250478b919?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b717a6d0469694bbe6400e6bfe45a1da',
-        false),
-    User(
-        'Kathleen Dyer',
-        '@kathleen',
-        'https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=ddcb7ec744fc63472f2d9e19362aa387',
-        false),
-    User(
-        'Mikayla Marquez',
-        '@mikayla',
-        'https://images.unsplash.com/photo-1541710430735-5fca14c95b00?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false),
-    User(
-        'Kiersten Lange',
-        '@kiersten',
-        'https://images.unsplash.com/photo-1542534759-05f6c34a9e63?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false),
-    User(
-        'Carys Metz',
-        '@metz',
-        'https://images.unsplash.com/photo-1516239482977-b550ba7253f2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false),
-    User(
-        'Ignacio Schmidt',
-        '@schmidt',
-        'https://images.unsplash.com/photo-1542973748-658653fb3d12?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false),
-    User(
-        'Clyde Lucas',
-        '@clyde',
-        'https://images.unsplash.com/photo-1569443693539-175ea9f007e8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false),
-    User(
-        'Mikayla Marquez',
-        '@mikayla',
-        'https://images.unsplash.com/photo-1541710430735-5fca14c95b00?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-        false)
+  List<MenuModel> _users = [
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 10000,
+        idMenu: 1,
+        jenis:'Makanan',
+        namaMenu: 'A'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 20000,
+        idMenu: 2,
+        jenis:'Makanan',
+        namaMenu: 'B'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 30000,
+        idMenu: 3,
+        jenis:'Makanan',
+        namaMenu: 'C'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 40000,
+        idMenu: 4,
+        jenis:'Makanan',
+        namaMenu: 'D'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 50000,
+        idMenu: 5,
+        jenis:'Makanan',
+        namaMenu: 'E'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 60000,
+        idMenu: 6,
+        jenis:'Makanan',
+        namaMenu: 'F'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 70000,
+        idMenu: 7,
+        jenis:'Makanan',
+        namaMenu: 'G'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 80000,
+        idMenu: 8,
+        jenis:'Makanan',
+        namaMenu: 'H'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 90000,
+        idMenu: 9,
+        jenis:'Makanan',
+        namaMenu: 'I'),
+    MenuModel(
+        deskripsi: 'Menu',
+        filename: 'FileMenu',
+        harga: 100000,
+        idMenu: 10,
+        jenis:'Makanan',
+        namaMenu: 'J'),
   ];
 
   List<User> _foundedUsers = [];
@@ -72,7 +93,7 @@ class _FoodListState extends State<FoodList> {
   void initState() {
     super.initState();
     setState(() {
-      _foundedUsers = _users;
+      _foundedUsers = _users.cast<User>();
     });
   }
 

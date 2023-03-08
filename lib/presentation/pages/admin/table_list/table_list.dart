@@ -1,10 +1,11 @@
 
+import 'package:cafe_wikusama/data/models/table_model.dart';
 import 'package:cafe_wikusama/presentation/pages/Admin/TableList/Widgets/addButton.dart';
 import 'package:cafe_wikusama/presentation/pages/admin/table_list/Widgets/editTable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
-import '../model.dart';
+
 
 class TableList extends StatefulWidget {
   const TableList({Key? key}) : super(key: key);
@@ -14,40 +15,60 @@ class TableList extends StatefulWidget {
 }
 
 class _TableListState extends State<TableList> {
-  List<ModelTable> _users = [
-    ModelTable(
-      'Table 1',
+  List<TableModel> _users = [
+    TableModel(
+      idMeja: 1,
+      nomorMeja: 'Table 1',
+      available: 1,
     ),
-    ModelTable(
-      'Table 2',
+    TableModel(
+      idMeja: 2,
+      nomorMeja: 'Table 2',
+      available: 1,
     ),
-    ModelTable(
-      'Table 3',
+    TableModel(
+      idMeja: 3,
+      nomorMeja: 'Table 3',
+      available: 1,
     ),
-    ModelTable(
-      'Table 4',
+    TableModel(
+      idMeja: 4,
+      nomorMeja: 'Table 4',
+      available: 1,
     ),
-    ModelTable(
-      'Table 5',
+    TableModel(
+      idMeja: 5,
+      nomorMeja: 'Table 5',
+      available: 1,
     ),
-    ModelTable(
-      'Table 6',
+    TableModel(
+      idMeja: 6,
+      nomorMeja: 'Table 6',
+      available: 1,
     ),
-    ModelTable(
-      'Table 7',
+    TableModel(
+      idMeja: 7,
+      nomorMeja: 'Table 7',
+      available: 1,
     ),
-    ModelTable(
-      'Table 8',
+    TableModel(
+      idMeja: 8,
+      nomorMeja: 'Table 8',
+      available: 1,
     ),
-    ModelTable(
-      'Table 9',
+    TableModel(
+      idMeja: 9,
+      nomorMeja: 'Table 9',
+      available: 1,
     ),
-    ModelTable(
-      'Table 10',
+    TableModel(
+      idMeja: 10,
+      nomorMeja: 'Table 10',
+      available: 1,
     ),
   ];
 
-  List<ModelTable> _foundedUsers = [];
+  List<TableModel> _foundedUsers = [];
 
   @override
   void initState() {
@@ -128,7 +149,7 @@ class _TableListState extends State<TableList> {
     );
   }
 
-  tableCard({required ModelTable user}) {
+  tableCard({required TableModel user}) {
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -141,7 +162,7 @@ class _TableListState extends State<TableList> {
           height: 75,
           child: Center(
             child: Text(
-              user.name,
+              user.nomorMeja ?? "",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),

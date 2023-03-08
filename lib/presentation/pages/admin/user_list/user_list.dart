@@ -1,3 +1,4 @@
+import 'package:cafe_wikusama/data/models/user_auth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
@@ -11,49 +12,97 @@ class UserList extends StatefulWidget {
 }
 
 class _UserListState extends State<UserList> {
-  List<ModelUser> _ModelUser = [
-    ModelUser('Elliana Palacios', '@elliana', 'kasir'),
-    ModelUser('Kayley Dwyer', '@kayley', 'manager'),
-    ModelUser(
-      'Kathleen Mcdonough',
-      '@kathleen',
-      'admin',
+  List<UserAuthModel> _UserAuthModel = [
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Kathleen Dyer',
-      '@kathleen',
-      'admin',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Mikayla Marquez',
-      '@mikayla',
-      'manager',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Kiersten Lange',
-      '@kiersten',
-      'kasir',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Carys Metz',
-      '@metz',
-      'admin',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Ignacio Schmidt',
-      '@schmidt',
-      'admin',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Clyde Lucas',
-      '@clyde',
-      'manager',
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
     ),
-    ModelUser(
-      'Mikayla Marquez',
-      '@mikayla',
-      'kasir',
-    )
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
+    ),
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
+    ),
+    UserAuthModel(
+        email: 'tes@gmail.com',
+        idUser: 1,
+        message: 'tes',
+        role: 'Kasir',
+        success: true,
+        token:'A',
+        username: 'AA'
+    ),
   ];
 
   List<ModelUser> _foundedUsers = [];
@@ -74,7 +123,7 @@ class _UserListState extends State<UserList> {
   void initState() {
     super.initState();
     setState(() {
-      _foundedUsers = _ModelUser;
+      _foundedUsers = _UserAuthModel.cast<ModelUser>();
     });
   }
 
