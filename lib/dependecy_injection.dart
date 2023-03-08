@@ -3,8 +3,10 @@ import 'package:cafe_wikusama/data/sources/remote/menu_remote_data_source.dart';
 import 'package:cafe_wikusama/data/sources/repository/menu_repository_impl.dart';
 import 'package:cafe_wikusama/domain/repositories/menu_repository.dart';
 import 'package:cafe_wikusama/domain/usecase/auth/Login.dart';
+import 'package:cafe_wikusama/domain/usecase/menu/AllMenu.dart';
 import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
 import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
+import 'package:cafe_wikusama/presentation/pages/kasir/menu/menu.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -26,13 +28,6 @@ void init() {
   locator.registerLazySingleton<AppSharedPreferences>(
       () => AppSharedPreferences(preferences: locator()));
 
-  // use case section
-  locator.registerLazySingleton(
-      () => Login(locator()));
-
-  locator.registerSingletonAsync<Dio>(() => DioClient().client());
-  locator.registerLazySingleton(() => http.Client());
-  locator.registerLazySingleton(() => Configs());
 
   //repository implementation section
   locator.registerLazySingleton<AuthRepository>(
@@ -45,6 +40,9 @@ void init() {
       menuRemoteDataSource: locator(),
     ),
   );
+// use case section
+  locator.registerLazySingleton(() => Login(locator()));
+  locator.registerLazySingleton(() => AllMenu(locator()));
 
   //notifier section
   locator.registerFactory(() => AuthNotifier(loginCase: locator()));
@@ -57,4 +55,9 @@ void init() {
   locator.registerLazySingleton<MenuRemoteDataSource>(
     () => MenuRemoteDataSourceImpl(),
   );
+
+  
+  locator.registerSingletonAsync<Dio>(() => DioClient().client());
+  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => Configs());
 }
