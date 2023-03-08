@@ -7,7 +7,6 @@ import 'package:get_it/get_it.dart';
 
 import '../../../data/models/menu_model.dart';
 import '../../pages/Kasir/Menu/menu.dart';
-import '../../pages/kasir/menu/menu.dart';
 
 class MenuNotifier extends ChangeNotifier {
   final AllMenu allMenu;
