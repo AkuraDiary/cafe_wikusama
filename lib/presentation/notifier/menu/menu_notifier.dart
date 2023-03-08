@@ -1,6 +1,7 @@
 import 'package:cafe_wikusama/common/app_shared_preferences.dart';
 import 'package:cafe_wikusama/common/failure.dart';
 import 'package:cafe_wikusama/common/state_enum.dart';
+import 'package:cafe_wikusama/domain/usecase/menu/AllMenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
@@ -13,9 +14,9 @@ class MenuNotifier extends ChangeNotifier {
   
   MenuNotifier({required this.allMenu});
   
-  MenuModel? _menuResult;
+  List<MenuModel?> _menuResult=[];
 
-  MenuModel? get menuResult => _menuResult;
+  List<MenuModel?> get menuResult => _menuResult;
 
   RequestFailure? _failure;
   
@@ -29,7 +30,7 @@ class MenuNotifier extends ChangeNotifier {
     _menuState = RequestState.Loading;
     notifyListeners();
 
-    final result = await allMenuCase.execute(email, password);
+    final result = await allMenu.execute();
 
     result.fold(
       (failure) {
@@ -39,10 +40,6 @@ class MenuNotifier extends ChangeNotifier {
       },
       (data) {
         _menuResult = data;
-
-        GetIt.I<AppSharedPreferences>().updateToken(
-            data.token!
-        );
         _menuState = RequestState.Loaded;
         notifyListeners();
       },
