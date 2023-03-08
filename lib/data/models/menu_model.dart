@@ -1,4 +1,6 @@
-class MenuModel {
+import 'package:equatable/equatable.dart';
+
+class MenuModel extends Equatable{
   int? idMenu;
   String? namaMenu;
   String? jenis;
@@ -37,4 +39,8 @@ class MenuModel {
     data['harga'] = this.harga;
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
 }
