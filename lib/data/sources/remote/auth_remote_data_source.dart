@@ -18,7 +18,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
           'password': password
         };
 
-        print(map);
        // var formData = FormData.fromMap(map);
 
         // print(formData.fields);
