@@ -1,12 +1,12 @@
 
 import 'package:cafe_wikusama/presentation/pages/admin/food_list/food_list.dart';
 import 'package:cafe_wikusama/presentation/pages/admin/table_list/table_list.dart';
+import 'package:cafe_wikusama/presentation/pages/kasir/menu/menu.dart';
 import 'package:flutter/material.dart';
 
-import '../presentation/pages/Kasir/Menu/menu.dart';
 import '../presentation/pages/Kasir/Pesan/pesanan.dart';
 import '../presentation/pages/Kasir/Riwayat/history_pesanan.dart';
-import '../presentation/pages/Kasir/Checkout/checkout.dart';
+
 
 class KasirBottomNav extends StatefulWidget {
   const KasirBottomNav({super.key});
@@ -18,7 +18,7 @@ class KasirBottomNav extends StatefulWidget {
 class _KasirBottomNavState extends State<KasirBottomNav> {
   int currentIndex = 0;
   final screens = [
-    const Checkout(),
+    Menu(),
     const Pesanan(),
     const HistoryPesanan(),
     //const Checkout()

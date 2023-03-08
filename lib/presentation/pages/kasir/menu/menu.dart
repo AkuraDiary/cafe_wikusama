@@ -7,7 +7,7 @@ import '../../../../data/models/menu_model.dart';
 import '../Model.dart';
 
 class Menu extends StatefulWidget {
-  const Menu({Key? key}) : super(key: key);
+   Menu({Key? key}) : super(key: key);
 
   @override
   _MenuState createState() => _MenuState();
