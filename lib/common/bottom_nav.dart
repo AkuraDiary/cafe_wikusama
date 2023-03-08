@@ -1,6 +1,4 @@
-import 'package:cafe_wikusama/presentation/pages/Admin/FoodList/Food_List.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/TableList/Table_List.dart';
-import 'package:cafe_wikusama/presentation/pages/Admin/UserList/User_List.dart';
+
 import 'package:flutter/material.dart';
 
 import '../presentation/pages/Kasir/Menu/menu.dart';
