@@ -26,7 +26,7 @@ class MenuNotifier extends ChangeNotifier {
 
   RequestState get loginState => _menuState;
 
-  Future<void> menu({required String email, required String password}) async {
+  Future<void> menu() async {
     _menuState = RequestState.Loading;
     notifyListeners();
 

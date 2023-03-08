@@ -1,6 +1,10 @@
 
+import 'package:cafe_wikusama/data/sources/remote/menu_remote_data_source.dart';
+import 'package:cafe_wikusama/data/sources/repository/menu_repository_impl.dart';
+import 'package:cafe_wikusama/domain/repositories/menu_repository.dart';
 import 'package:cafe_wikusama/domain/usecase/auth/Login.dart';
 import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
+import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -36,12 +40,21 @@ void init() {
       authRemoteDataSource: locator(),
     ),
   );
+  locator.registerLazySingleton<MenuRepository>(
+    () => MenuRepositoryImpl(
+      menuRemoteDataSource: locator(),
+    ),
+  );
 
   //notifier section
   locator.registerFactory(() => AuthNotifier(loginCase: locator()));
+  locator.registerFactory(() => MenuNotifier(allMenu: locator()));
 
   //data source section
   locator.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(),
+  );
+  locator.registerLazySingleton<MenuRemoteDataSource>(
+    () => MenuRemoteDataSourceImpl(),
   );
 }

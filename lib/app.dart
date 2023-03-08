@@ -1,4 +1,5 @@
 import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
+import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
 import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'common/app_shared_preferences.dart';
@@ -8,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:cafe_wikusama/dependecy_injection.dart' as di;
 
-import 'presentation/pages/Login/login_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => di.locator<AuthNotifier>()),
-
+        ChangeNotifierProvider(create: (_) => di.locator<MenuNotifier>()),
       ],
       child: Builder(
         builder: (context) {
