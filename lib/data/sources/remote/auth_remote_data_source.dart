@@ -17,14 +17,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
           'email': email,
           'password': password
         };
+
         print(map);
-        var formData = FormData.fromMap(map);
+       // var formData = FormData.fromMap(map);
 
         // print(formData.fields);
-        final response = await GetIt.I<Dio>().post("login", data: formData);
-        print(response);
+        final response = await GetIt.I<Dio>().post("login", data: map);
         if(response.statusCode == 200){
-          return UserAuthModel.fromJson(response.data["values"]);
+          return UserAuthModel.fromJson(response.data);
         }else{
           throw RequestFailure(response.statusCode ?? 1, response.statusMessage ?? "");
         }

@@ -33,13 +33,15 @@ class AuthNotifier extends ChangeNotifier {
       (failure) {
         _failure = failure as RequestFailure?;
         _loginState = RequestState.Error;
+        notifyListeners();
       },
       (data) {
         _loginResult = data;
-        _loginState = RequestState.Loaded;
+
         GetIt.I<AppSharedPreferences>().updateToken(
             data.token!
         );
+        _loginState = RequestState.Loaded;
         notifyListeners();
       },
     );
