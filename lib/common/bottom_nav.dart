@@ -19,7 +19,7 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
   int currentIndex = 0;
   final screens = [
     Menu(),
-    const Pesanan(),
+    Pesanan(),
     const HistoryPesanan(),
     //const Checkout()
   ];

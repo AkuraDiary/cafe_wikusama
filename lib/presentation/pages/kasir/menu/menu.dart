@@ -21,9 +21,8 @@ class _MenuState extends State<Menu> {
 
   @override
   void initState() {
-    allMenu();
     super.initState();
-
+    allMenu();
     // setState(() {});
   }
 
@@ -153,7 +152,7 @@ class _MenuState extends State<Menu> {
                 )),
             SizedBox(width: 10),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(menuModel?.namaMenu ?? "",
+              Text("PIZZA APA HAYO",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

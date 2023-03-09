@@ -1,5 +1,6 @@
 import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
 import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
+import 'package:cafe_wikusama/presentation/notifier/transaksi/transaksi_notifier.dart';
 import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'common/app_shared_preferences.dart';
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => di.locator<AuthNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<MenuNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TransaksiNotifier>()),  
       ],
       child: Builder(
         builder: (context) {
