@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: Colors.amber,
             ),
             home: (token == null || token == "") ? LoginScreen() : KasirBottomNav(),
             //Change AdminBottomNav() to display admin List features without login
