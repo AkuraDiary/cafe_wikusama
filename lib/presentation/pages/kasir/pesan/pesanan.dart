@@ -1,87 +1,31 @@
+import 'package:cafe_wikusama/data/models/menu_model.dart';
+import 'package:cafe_wikusama/data/models/transaksi_model.dart';
+import 'package:cafe_wikusama/domain/usecase/transaksi/AllTransaksi.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import 'package:cafe_wikusama/presentation/notifier/transaksi/transaksi_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 import '../Model.dart';
 
 class Pesanan extends StatefulWidget {
-  const Pesanan({Key? key}) : super(key: key);
+  Pesanan({Key? key}) : super(key: key);
 
   @override
   _PesananState createState() => _PesananState();
 }
 
 class _PesananState extends State<Pesanan> {
-  List<ModelPesanan> _foundedMenu = [];
-
-  List<ModelPesanan> _users = [
-    ModelPesanan(
-        '01',
-        'Elliana Palacios',
-        '@elliana',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '02',
-        'Kayley Dwyer',
-        '@kayley',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '03',
-        'Kathleen Mcdonough',
-        '@kathleen',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '04',
-        'Kathleen Dyer',
-        '@kathleen',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '05',
-        'Mikayla Marquez',
-        '@mikayla',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '06',
-        'Kiersten Lange',
-        '@kiersten',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '07',
-        'Carys Metz',
-        '@metz',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '08',
-        'Ignacio Schmidt',
-        '@schmidt',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '09',
-        'Clyde Lucas',
-        '@clyde',
-        'Rp 270000',
-        false),
-    ModelPesanan(
-        '10',
-        'Mikayla Marquez',
-        '@mikayla',
-        'Rp 270000',
-        false)
-  ];
+  allTransaksi() async {
+    Future.microtask(
+        () => Provider.of<TransaksiNotifier>(context, listen: false)..transaksi());
+  }
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      _foundedMenu = _users;
-    });
+    allTransaksi();
+    // setState(() {});
   }
 
   @override
@@ -95,9 +39,9 @@ class _PesananState extends State<Pesanan> {
           height: 38,
           child: Text(
             "Pesanan",
-              style: TextStyle(color: Colors.black,fontSize: 30),
+            style: TextStyle(color: Colors.black, fontSize: 30),
+          ),
         ),
-      ),
         actions: [
           //Filter Icon
           IconButton(
@@ -106,7 +50,7 @@ class _PesananState extends State<Pesanan> {
               color: Colors.black,
               size: 25,
             ),
-            onPressed: (){
+            onPressed: () {
               print("Test");
             },
           )
@@ -114,106 +58,124 @@ class _PesananState extends State<Pesanan> {
       ),
       body: Container(
         color: Colors.white,
-        child: _foundedMenu.length > 0
-            ? ListView.builder(
-            itemCount: _foundedMenu.length,
-            itemBuilder: (context, index) {
-              return Slidable(
-                actionPane: SlidableDrawerActionPane(),
-                actionExtentRatio: 0.25,
-                child: pesananCard(user: _foundedMenu[index]),
-               );
-            })
-            : Center(
-            child: Text(
-              "No users found",
-              style: TextStyle(color: Colors.white),
-            )),
+        child: Consumer<TransaksiNotifier>(
+          builder: (context,provider,child) {
+            return provider.transaksiResult.length > 0
+                ? ListView.builder(
+                    itemCount: provider.transaksiResult.length,
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        actionPane: SlidableDrawerActionPane(),
+                        actionExtentRatio: 0.25,
+                        child: pesananCard(transaksiModel: provider.transaksiResult[index]!),
+                      );
+                    })
+                : Center(
+                    child: Text(
+                    "No users found",
+                    style: TextStyle(color: Colors.black),
+                  ));
+          }
+        ),
       ),
     );
   }
 
-  pesananCard({required ModelPesanan user}) {
+  pesananCard({required TransaksiModel transaksiModel}) {
     return Container(
-    margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
-    padding: EdgeInsets.only(top: 10, bottom: 10,left: 20,right: 20),
-    decoration: BoxDecoration(
-    border: Border.all(color: Colors.black,width: 1),
-    borderRadius: BorderRadius.circular(20),
-    color: Colors.transparent,
-    ),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black, width: 1),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.transparent,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(user.no,
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  // transaksiModel.idMeja.toString(),
+                  "No ${transaksiModel.idMeja}",
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                    color: Colors.black,fontWeight: FontWeight.w500, fontSize: 14
-                  ) ,),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(user.name,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  transaksiModel.namaPelanggan!,
                   style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.w500
-                  ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(user.username,
-                    style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
-                    ),),
-                  Text(user.username,
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
-                    ),),
-                  Text(user.username,
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14
-                    ),),
-                  SizedBox(
-                    height: 10,
-                  )
-                ],
-              ),
+                    fontSize: 15,
+                      color: Colors.black, fontWeight: FontWeight.w500),
+                ),
+                // SizedBox(
+                //   height: 10,
+                // ),
+                // Text(
+                //   "Nama Makanan",
+                //   style: TextStyle(
+                //       color: Colors.black,
+                //       fontWeight: FontWeight.w500,
+                //       fontSize: 14),
+                // ),
+                // Text(
+                //   "Nama Makanan",
+                //   style: TextStyle(
+                //       color: Colors.black,
+                //       fontWeight: FontWeight.w500,
+                //       fontSize: 14),
+                // ),
+                // Text(
+                //   "Nama Makanan",
+                //   style: TextStyle(
+                //       color: Colors.black,
+                //       fontWeight: FontWeight.w500,
+                //       fontSize: 14),
+                // ),
+                // SizedBox(
+                //   height: 10,
+                // )
+              ],
             ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(user.price,
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500
-                    ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.orange,
-                    child: Text(
-                        "On Going"
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "User, Date",
-                    style: TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w200
-                    ),
-
-                  )
-                ],
-              ),
+          ),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Text(
+                //   user.price,
+                //   style: TextStyle(
+                //       color: Colors.black, fontWeight: FontWeight.w500),
+                // ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  color: transaksiModel.status == "lunas"
+                      ? Colors.green
+                      : Colors.red,
+                  child: Text(transaksiModel.status!),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  transaksiModel.tglTransaksi!,
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),
+                )
+              ],
             ),
+          ),
         ],
       ),
     );

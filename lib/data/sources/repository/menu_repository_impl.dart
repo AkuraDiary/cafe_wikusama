@@ -1,9 +1,6 @@
 import 'package:cafe_wikusama/common/failure.dart';
 import 'package:cafe_wikusama/data/models/menu_model.dart';
-import 'package:cafe_wikusama/data/models/user_auth_model.dart';
-import 'package:cafe_wikusama/data/sources/remote/auth_remote_data_source.dart';
 import 'package:cafe_wikusama/data/sources/remote/menu_remote_data_source.dart';
-import 'package:cafe_wikusama/domain/repositories/auth_repository.dart';
 import 'package:cafe_wikusama/domain/repositories/menu_repository.dart';
 import 'package:dartz/dartz.dart';
 
