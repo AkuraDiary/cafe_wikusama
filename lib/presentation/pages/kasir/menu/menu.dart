@@ -152,7 +152,7 @@ class _MenuState extends State<Menu> {
                 )),
             SizedBox(width: 10),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("PIZZA APA HAYO",
+              Text(menuModel.namaMenu!,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -160,13 +160,17 @@ class _MenuState extends State<Menu> {
               SizedBox(
                 height: 5,
               ),
-              Text("Deskripsi Produk",
-                  style: TextStyle(color: Colors.grey[500], fontSize: 12)),
+              Container(
+                width: 100,
+                height: 30,
+                child: Text(menuModel.deskripsi!,
+                    style: TextStyle(color: Colors.grey[500], fontSize: 12)),
+              ),
               SizedBox(
                 height: 25,
               ),
               Text(
-                "Rp. ",
+                'Rp. ${menuModel.harga}',
                 style: TextStyle(color: Colors.amber),
               ),
             ])
