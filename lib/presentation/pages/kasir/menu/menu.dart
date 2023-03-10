@@ -119,9 +119,9 @@ class _MenuState extends State<Menu> {
                 ' 3 Items | Rp. 180.000,00',
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
-              Text(
-                ' View Orders',
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              TextButton(
+                onPressed: () {  },
+                child: Text("View Order"),
               )
             ],
           ),
