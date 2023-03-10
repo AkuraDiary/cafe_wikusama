@@ -87,6 +87,20 @@ class _MenuState extends State<Menu> {
                         actionPane: SlidableDrawerActionPane(),
                         actionExtentRatio: 0.25,
                         child: Flexible(child: menuCard(menuModel: provider.menuResult[index]!)),
+                        secondaryActions: <Widget>[
+                          new IconSlideAction(
+                            caption: 'Add',
+                            color: Colors.white,
+                            icon: Icons.edit,
+                            onTap: () {
+                              // showDialog(
+                              //     context: context,
+                              //     builder: (context) {
+                              //       return editTable();
+                              //     });
+                            },
+                          ),
+                        ],
                       );
                     })
                 : Center(
