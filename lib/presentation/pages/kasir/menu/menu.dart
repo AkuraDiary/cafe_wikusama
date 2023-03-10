@@ -86,7 +86,7 @@ class _MenuState extends State<Menu> {
                       return Slidable(
                         actionPane: SlidableDrawerActionPane(),
                         actionExtentRatio: 0.25,
-                        child: menuCard(menuModel: provider.menuResult[index]!),
+                        child: Flexible(child: menuCard(menuModel: provider.menuResult[index]!)),
                       );
                     })
                 : Center(
@@ -131,74 +131,78 @@ class _MenuState extends State<Menu> {
   }
 
   menuCard({required MenuModel menuModel}) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1.0),
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.transparent,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(children: [
-            Container(
-                width: 110,
-                height: 110,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: Image.network(menuModel.path!),
-                )),
-            SizedBox(width: 10),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("PIZZA APA HAYO",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14)),
-              SizedBox(
-                height: 5,
-              ),
-              Text("Deskripsi Produk",
-                  style: TextStyle(color: Colors.grey[500], fontSize: 12)),
-              SizedBox(
-                height: 25,
-              ),
-              Text(
-                "Rp. ",
-                style: TextStyle(color: Colors.amber),
-              ),
-            ])
-          ]),
-          // GestureDetector(
-          //   onTap: () {
-          //     setState(() {
-          //       // user.addItem = !user.addItem;
-          //     });
-          //   },
-          //   child: AnimatedContainer(
-          //       height: 35,
-          //       width: 70,
-          //       duration: Duration(milliseconds: 300),
-          //       decoration: BoxDecoration(
-          //           color:
-          //               user.addItem ? Colors.transparent : Colors.transparent,
-          //           borderRadius: BorderRadius.circular(5),
-          //           border: Border.all(
-          //             color: user.addItem
-          //                 ? Colors.transparent
-          //                 : Colors.transparent,
-          //           )),
-          //       child: Center(
-          //           child: Text(user.addItem ? 'Added' : 'Add',
-          //               style: TextStyle(
-          //                   fontWeight: FontWeight.bold,
-          //                   fontSize: 16,
-          //                   color:
-          //                       user.addItem ? Colors.black : Colors.black)))),
-          // )
-        ],
+    return Flexible(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 1.0),
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.transparent,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(children: [
+              Container(
+                  width: 110,
+                  height: 110,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: Image.network(menuModel.path!),
+                  )),
+              SizedBox(width: 10),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(menuModel.namaMenu?? "",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14)),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(menuModel.deskripsi?? "",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.grey[500], fontSize: 12)),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  "Rp : "+menuModel.harga.toString()?? "",
+                  style: TextStyle(color: Colors.amber),
+                ),
+              ])
+            ]),
+            // GestureDetector(
+            //   onTap: () {
+            //     setState(() {
+            //       // user.addItem = !user.addItem;
+            //     });
+            //   },
+            //   child: AnimatedContainer(
+            //       height: 35,
+            //       width: 70,
+            //       duration: Duration(milliseconds: 300),
+            //       decoration: BoxDecoration(
+            //           color:
+            //               user.addItem ? Colors.transparent : Colors.transparent,
+            //           borderRadius: BorderRadius.circular(5),
+            //           border: Border.all(
+            //             color: user.addItem
+            //                 ? Colors.transparent
+            //                 : Colors.transparent,
+            //           )),
+            //       child: Center(
+            //           child: Text(user.addItem ? 'Added' : 'Add',
+            //               style: TextStyle(
+            //                   fontWeight: FontWeight.bold,
+            //                   fontSize: 16,
+            //                   color:
+            //                       user.addItem ? Colors.black : Colors.black)))),
+            // )
+          ],
+        ),
       ),
     );
   }
