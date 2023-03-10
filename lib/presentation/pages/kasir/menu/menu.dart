@@ -175,10 +175,13 @@ class _MenuState extends State<Menu> {
                 SizedBox(
                   height: 5,
                 ),
-                Text(menuModel.deskripsi?? "",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey[500], fontSize: 12)),
+                Container(
+                    width: 100,
+                    height: 30,
+                    child: Text(menuModel.deskripsi?? "",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.grey[500], fontSize: 12))),
                 SizedBox(
                   height: 25,
                 ),
