@@ -1,14 +1,19 @@
 import 'package:cafe_wikusama/data/sources/remote/menu_remote_data_source.dart';
+import 'package:cafe_wikusama/data/sources/remote/table_remote_data_source.dart';
 import 'package:cafe_wikusama/data/sources/remote/transaksi_remote_data_source.dart';
 import 'package:cafe_wikusama/data/sources/repository/menu_repository_impl.dart';
+import 'package:cafe_wikusama/data/sources/repository/table_repository_impl.dart';
 import 'package:cafe_wikusama/data/sources/repository/transaksi_repository_impl.dart';
 import 'package:cafe_wikusama/domain/repositories/menu_repository.dart';
+import 'package:cafe_wikusama/domain/repositories/table_repository.dart';
 import 'package:cafe_wikusama/domain/repositories/transaksi_repository.dart';
 import 'package:cafe_wikusama/domain/usecase/auth/Login.dart';
 import 'package:cafe_wikusama/domain/usecase/menu/AllMenu.dart';
+import 'package:cafe_wikusama/domain/usecase/table/AllTable.dart';
 import 'package:cafe_wikusama/domain/usecase/transaksi/AllTransaksi.dart';
 import 'package:cafe_wikusama/presentation/notifier/auth/auth_notifier.dart';
 import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
+import 'package:cafe_wikusama/presentation/notifier/table/table_notifier.dart';
 import 'package:cafe_wikusama/presentation/notifier/transaksi/transaksi_notifier.dart';
 import 'package:cafe_wikusama/presentation/pages/kasir/menu/menu.dart';
 import 'package:get_it/get_it.dart';
@@ -48,15 +53,24 @@ void init() {
       transaksiRemoteDataSource: locator(),
     ),
   );
-// use case section
+    locator.registerLazySingleton<TableRepository>(
+    () => TableRepositoryImpl(
+      tableRemoteDataSource: locator(),
+    ),
+  );
+
+  //usecase section
   locator.registerLazySingleton(() => Login(locator()));
   locator.registerLazySingleton(() => AllMenu(locator()));
   locator.registerLazySingleton(() => AllTransaksi(locator()));
+  locator.registerLazySingleton(() => AllTable(locator()));
+
 
   //notifier section
   locator.registerFactory(() => AuthNotifier(loginCase: locator()));
   locator.registerFactory(() => MenuNotifier(allMenu: locator()));
   locator.registerFactory(() => TransaksiNotifier(allTransaksi: locator()));
+  locator.registerFactory(() => TableNotifier(allTable: locator()));
 
   //data source section
   locator.registerLazySingleton<AuthRemoteDataSource>(
@@ -67,6 +81,9 @@ void init() {
   );
   locator.registerLazySingleton<TransaksiRemoteDataSource>(
     () => TransaksiRemoteDataSourceImpl(),
+  );
+  locator.registerLazySingleton<TableRemoteDataSource>(
+    () => TableRemoteDataSourceImpl(),
   );
   locator.registerSingletonAsync<Dio>(() => DioClient().client());
   locator.registerLazySingleton(() => http.Client());

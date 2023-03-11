@@ -2,6 +2,7 @@
 import 'package:cafe_wikusama/presentation/pages/admin/food_list/food_list.dart';
 import 'package:cafe_wikusama/presentation/pages/admin/table_list/table_list.dart';
 import 'package:cafe_wikusama/presentation/pages/kasir/menu/menu.dart';
+import 'package:cafe_wikusama/presentation/pages/kasir/table/meja.dart';
 import 'package:flutter/material.dart';
 
 import '../presentation/pages/Kasir/Pesan/pesanan.dart';
@@ -20,7 +21,8 @@ class _KasirBottomNavState extends State<KasirBottomNav> {
   final screens = [
     Menu(),
     Pesanan(),
-    const HistoryPesanan(),
+    TableAvail(),
+    // const HistoryPesanan(),
     //const Checkout()
   ];
 
