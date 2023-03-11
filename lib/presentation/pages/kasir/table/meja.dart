@@ -241,26 +241,32 @@ class _TableAvailState extends State<TableAvail> {
   tableCard({required TableModel tableModel}) {
     return tableModel.available! > 0
         ? Container(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 1.0),
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.transparent,
-        ),
-        child: Container(
-          height: 75,
-          child: Center(
-            child: Text(
-              tableModel.nomorMeja!,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1.0),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.transparent,
             ),
-          ),
-        ))
-    : Container(
-      // child: Text(
-      //   'awawaawaw',
-      //   style: TextStyle(color: Colors.black)),
-    );
+            child: Container(
+              height: 75,
+              child: Center(
+                child: Text(
+                  tableModel.nomorMeja!,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          )
+        : Container(
+            height: 90,
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1.0),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.amber,
+            ),
+          );
   }
 }
