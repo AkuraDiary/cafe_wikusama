@@ -1,4 +1,7 @@
+import 'package:cafe_wikusama/common/app_shared_preferences.dart';
+import 'package:cafe_wikusama/dependecy_injection.dart';
 import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
+import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
@@ -7,7 +10,7 @@ import '../../../../data/models/menu_model.dart';
 import '../Model.dart';
 
 class Menu extends StatefulWidget {
-   Menu({Key? key}) : super(key: key);
+  Menu({Key? key}) : super(key: key);
 
   @override
   _MenuState createState() => _MenuState();
@@ -37,7 +40,6 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     final sizedevice = MediaQuery.of(context).size.width;
-    
 
     return Scaffold(
       appBar: AppBar(
@@ -45,12 +47,12 @@ class _MenuState extends State<Menu> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
-        height: 38,
-        child: Text(
-        "Menu",
-        style: TextStyle(color: Colors.black, fontSize: 30),
-    ),
-    ),
+          height: 38,
+          child: Text(
+            "Menu",
+            style: TextStyle(color: Colors.black, fontSize: 30),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(
@@ -59,47 +61,51 @@ class _MenuState extends State<Menu> {
               size: 25,
             ),
             onPressed: () {
-              print("Test");
+              final logout =
+                  locator.get<AppSharedPreferences>().removeToken(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => LoginScreen())));
             },
           )
         ],
       ),
       body: Container(
         color: Colors.white,
-        child: Consumer<MenuNotifier>(
-          builder: (context,provider,child) {
-            return provider.menuResult.length > 0
-                ? ListView.builder(
-                    itemCount: provider.menuResult.length,
-                    itemBuilder: (context, index) {
-                      return Slidable(
-                        actionPane: SlidableDrawerActionPane(),
-                        actionExtentRatio: 0.25,
-                        child: Flexible(child: menuCard(menuModel: provider.menuResult[index]!)),
-                        secondaryActions: <Widget>[
-                          new IconSlideAction(
-                            caption: 'Add',
-                            color: Colors.white,
-                            icon: Icons.edit,
-                            onTap: () {
-                              provider.menuResult[index]!.harga = provider.menuResult[index]!.harga! + 1;
-                              // showDialog(
-                              //     context: context,
-                              //     builder: (context) {
-                              //       return editTable();
-                              //     });
-                            },
-                          ),
-                        ],
-                      );
-                    })
-                : Center(
-                    child: Text(
-                    "No users found",
-                    style: TextStyle(color: Colors.black),
-                  ));
-          }
-        ),
+        child: Consumer<MenuNotifier>(builder: (context, provider, child) {
+          return provider.menuResult.length > 0
+              ? ListView.builder(
+                  itemCount: provider.menuResult.length,
+                  itemBuilder: (context, index) {
+                    return Slidable(
+                      actionPane: SlidableDrawerActionPane(),
+                      actionExtentRatio: 0.25,
+                      child: Flexible(
+                          child:
+                              menuCard(menuModel: provider.menuResult[index]!)),
+                      secondaryActions: <Widget>[
+                        new IconSlideAction(
+                          caption: 'Add',
+                          color: Colors.white,
+                          icon: Icons.edit,
+                          onTap: () {
+                            provider.menuResult[index]!.harga =
+                                provider.menuResult[index]!.harga! + 1;
+                            // showDialog(
+                            //     context: context,
+                            //     builder: (context) {
+                            //       return editTable();
+                            //     });
+                          },
+                        ),
+                      ],
+                    );
+                  })
+              : Center(
+                  child: Text(
+                  "No users found",
+                  style: TextStyle(color: Colors.black),
+                ));
+        }),
       ),
       floatingActionButton: Positioned(
         height: 80,
@@ -124,12 +130,10 @@ class _MenuState extends State<Menu> {
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
               TextButton(
-                onPressed: () {  },
+                onPressed: () {},
                 child: Text("View Order"),
               )
             ],
-
-
           ),
         ),
       ),
@@ -159,7 +163,7 @@ class _MenuState extends State<Menu> {
                   )),
               SizedBox(width: 10),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(menuModel.namaMenu?? "",
+                Text(menuModel.namaMenu ?? "",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -170,15 +174,16 @@ class _MenuState extends State<Menu> {
                 Container(
                     width: 100,
                     height: 30,
-                    child: Text(menuModel.deskripsi?? "",
+                    child: Text(menuModel.deskripsi ?? "",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: Colors.grey[500], fontSize: 12))),
+                        style:
+                            TextStyle(color: Colors.grey[500], fontSize: 12))),
                 SizedBox(
                   height: 25,
                 ),
                 Text(
-                  "Rp : "+menuModel.harga.toString()?? "",
+                  "Rp : " + menuModel.harga.toString() ?? "",
                   style: TextStyle(color: Colors.amber),
                 ),
               ])
