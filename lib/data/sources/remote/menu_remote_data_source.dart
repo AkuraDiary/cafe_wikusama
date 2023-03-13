@@ -11,7 +11,7 @@ abstract class MenuRemoteDataSource {
 
 class MenuRemoteDataSourceImpl implements MenuRemoteDataSource{
   @override
-  Future<List<MenuModel>> getAllMenu0011111111000()async {
+  Future<List<MenuModel>> getAllMenu()async {
 
     // TODO: implement getAllMenu
     try{

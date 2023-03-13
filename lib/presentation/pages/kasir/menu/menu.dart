@@ -40,42 +40,30 @@ class _MenuState extends State<Menu> {
     
 
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(
-      //         MyFlutterApp.sliders_h,
-      //         color: Colors.black,
-      //         size: 25,
-      //       ),
-      //       onPressed: () {
-      //         print("Test");
-      //       },
-      //     )
-      //   ],
-      //   backgroundColor: Colors.white,
-      //   title: Container(
-      //     height: 38,
-      //     margin: EdgeInsets.only(top: 10),
-      //     child: TextField(
-      //       onChanged: (value) => onSearch(value),
-      //       decoration: InputDecoration(
-      //           filled: true,
-      //           fillColor: Colors.grey.shade200,
-      //           contentPadding: EdgeInsets.all(0),
-      //           prefixIcon: Icon(
-      //             Icons.search,
-      //             color: Colors.black,
-      //           ),
-      //           border: OutlineInputBorder(
-      //               borderRadius: BorderRadius.circular(50),
-      //               borderSide: BorderSide.none),
-      //           hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-      //           hintText: "Customers cari apa?"),
-      //     ),
-      //   ),
-      // ),
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Container(
+        height: 38,
+        child: Text(
+        "Menu",
+        style: TextStyle(color: Colors.black, fontSize: 30),
+    ),
+    ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.black,
+              size: 25,
+            ),
+            onPressed: () {
+              print("Test");
+            },
+          )
+        ],
+      ),
       body: Container(
         color: Colors.white,
         child: Consumer<MenuNotifier>(
