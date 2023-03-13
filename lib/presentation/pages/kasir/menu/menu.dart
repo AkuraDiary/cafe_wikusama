@@ -61,8 +61,7 @@ class _MenuState extends State<Menu> {
               size: 25,
             ),
             onPressed: () {
-              final logout =
-                  locator.get<AppSharedPreferences>().removeToken(context);
+              locator.get<AppSharedPreferences>().removeToken(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: ((context) => LoginScreen())));
             },
