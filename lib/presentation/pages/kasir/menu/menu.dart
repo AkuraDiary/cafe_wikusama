@@ -37,6 +37,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     final sizedevice = MediaQuery.of(context).size.width;
+    
 
     return Scaffold(
       // appBar: AppBar(
@@ -93,6 +94,7 @@ class _MenuState extends State<Menu> {
                             color: Colors.white,
                             icon: Icons.edit,
                             onTap: () {
+                              provider.menuResult[index]!.harga = provider.menuResult[index]!.harga! + 1;
                               // showDialog(
                               //     context: context,
                               //     builder: (context) {
