@@ -3,6 +3,7 @@ import 'package:cafe_wikusama/common/failure.dart';
 import 'package:cafe_wikusama/common/state_enum.dart';
 import 'package:cafe_wikusama/domain/usecase/menu/AllMenu.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../data/models/menu_model.dart';
@@ -24,6 +25,8 @@ class MenuNotifier extends ChangeNotifier {
   RequestState _menuState = RequestState.Empty;
 
   RequestState get loginState => _menuState;
+
+  var currentSeletected = 0.obs;
 
   Future<void> menu() async {
     _menuState = RequestState.Loading;

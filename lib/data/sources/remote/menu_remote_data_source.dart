@@ -5,7 +5,10 @@ import 'package:cafe_wikusama/data/response/base_response.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+
+
 abstract class MenuRemoteDataSource {
+  static const String path = 'https://api.zackym.com/transaksi';
   Future<List<MenuModel>> getAllMenu();
 }
 
@@ -33,6 +36,24 @@ class MenuRemoteDataSourceImpl implements MenuRemoteDataSource{
 
     } on DioError{
       throw RequestFailure(-1, "Not Connected");
+    }
+  }
+  static Future<MenuModel?> createComment(
+      int postId, String name, String email, String body) async {
+    try {
+      var response = await Dio().post('https://api.zackym.com/transaksi',
+          data: {'postId': postId, 'name': name, 'email': email, 'body': body});
+      if (response.statusCode == 201) {
+        return MenuModel(
+            id: response.data['id'],
+            name: response.data['name'],
+            email: response.data['email'],
+            body: response.data['body'],
+            postId: response.data['postId']);
+      }
+      return null;
+    } catch (e) {
+      throw Exception(e.toString());
     }
   }
 

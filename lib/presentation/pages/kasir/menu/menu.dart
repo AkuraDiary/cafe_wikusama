@@ -1,10 +1,13 @@
 import 'package:cafe_wikusama/common/app_shared_preferences.dart';
+import 'package:cafe_wikusama/common/controller_menu.dart';
 import 'package:cafe_wikusama/dependecy_injection.dart';
 import 'package:cafe_wikusama/presentation/notifier/menu/menu_notifier.dart';
 import 'package:cafe_wikusama/presentation/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cafe_wikusama/presentation/Assets_For_Icon/my_flutter_app_icons.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:provider/provider.dart';
 import '../../../../data/models/menu_model.dart';
 import '../Model.dart';
@@ -17,6 +20,9 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  final fodeController = Get.find<FodeController>;
+  var currentSeletected = 0.obs;
+
   allMenu() async {
     Future.microtask(
         () => Provider.of<MenuNotifier>(context, listen: false)..menu());
@@ -40,6 +46,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     final sizedevice = MediaQuery.of(context).size.width;
+    var currentSeletected = 0.obs;
 
     return Scaffold(
       appBar: AppBar(
@@ -87,8 +94,7 @@ class _MenuState extends State<Menu> {
                           color: Colors.white,
                           icon: Icons.edit,
                           onTap: () {
-                            provider.menuResult[index]!.harga =
-                                provider.menuResult[index]!.harga! + 1;
+                            fodeController.currentSelected.value = index;
                             // showDialog(
                             //     context: context,
                             //     builder: (context) {
